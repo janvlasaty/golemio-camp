@@ -1,0 +1,31 @@
+
+/* ======
+TEXT  PARKING
+  ====== */
+#text-prparking-right {
+    position: absolute;
+    left: 5300px;
+}
+#text-prparking-right * {
+    width: 550px;
+}
+#text-prparking-info {
+    position: absolute;
+    top: 380px;
+    width: 850px;
+}
+#text-prparkings-info h1 {
+    margin-bottom: 10px;
+}
+#text-prparking-averageoccupancytitle {
+    position: absolute;
+    left: 1110px;
+    top: 20px;
+    width: 400px;
+}
+#text-prparking-parkinglotstatistics {
+    position: absolute;
+    left:160px;
+    top: 850px;
+    width: 500px;
+}

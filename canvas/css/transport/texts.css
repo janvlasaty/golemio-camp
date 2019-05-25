@@ -1,0 +1,19 @@
+
+/* ======
+TEXT  PARKING
+  ====== */
+#text-transport-all {
+    position: absolute;
+    left: 1100px;
+}
+#text-transport-all * {
+    width: 550px;
+}
+#text-transport-info {
+    position: absolute;
+    top: 380px;
+    width: 850px;
+}
+#text-transport-info h1 {
+    margin-bottom: 10px;
+}

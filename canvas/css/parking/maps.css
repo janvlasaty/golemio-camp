@@ -1,0 +1,16 @@
+/* ======
+MAP 
+  ====== */
+
+#container-parking .map-wrapper {
+    position: absolute;
+    height: 100%;
+    width: 3000px;
+    left: 2400px;
+    z-index:0;
+}
+
+#container-parking .map {
+    height: 100%;
+    width: 3000px;
+}

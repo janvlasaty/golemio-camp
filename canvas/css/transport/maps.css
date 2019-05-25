@@ -1,0 +1,26 @@
+/* ======
+MAP 
+  ====== */
+
+#map-transport-wrapper-all {
+    position: absolute;
+    height: 100%;
+    width: 1500px;
+    left: 1400px;
+    z-index:0;
+}
+#map-transport-wrapper-all .map {
+  width: 1500px;
+}
+
+
+#map-transport-wrapper-detail {
+  position: absolute;
+  height: 100%;
+  width: 2000px;
+  left: 4400px;
+  z-index:0;
+}
+#map-transport-wrapper-detail .map {
+  width: 2000px;
+}
