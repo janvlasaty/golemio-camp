@@ -5,69 +5,53 @@
         <meta http-equiv=“Pragma” content=”no-cache”>
         <meta http-equiv=“Expires” content=”-1″>
         <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+        <meta charset="UTF-8">
         <title>CAMP Prague NOW</title>
-        <link rel="stylesheet" type="text/css" href="css/animate.css">
-        <link rel="stylesheet" type="text/css" href="css/apexcharts.css">
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="./css/animate.css">
+        <link rel="stylesheet" type="text/css" href="./css/apexcharts.css">
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
         <!-- DEFAULTS -->
-        <link rel="stylesheet" type="text/css" href="css/maps.css">
-        <link rel="stylesheet" type="text/css" href="css/charts.css">
-        <link rel="stylesheet" type="text/css" href="css/statistics.css">
-        <link rel="stylesheet" type="text/css" href="css/texts.css">
-            <!-- PARKING -->
-            <link rel="stylesheet" type="text/css" href="css/parking/maps.css">
-            <link rel="stylesheet" type="text/css" href="css/parking/charts.css">
-            <link rel="stylesheet" type="text/css" href="css/parking/statistics.css">
-            <link rel="stylesheet" type="text/css" href="css/parking/texts.css">
-            <!-- TRANSPORT -->
-            <link rel="stylesheet" type="text/css" href="css/transport/maps.css">
-            <link rel="stylesheet" type="text/css" href="css/transport/charts.css">
-            <link rel="stylesheet" type="text/css" href="css/transport/statistics.css">
-            <link rel="stylesheet" type="text/css" href="css/transport/texts.css">
-            <!-- AIRQUALITY -->
-            <link rel="stylesheet" type="text/css" href="css/airquality/maps.css">
-            <link rel="stylesheet" type="text/css" href="css/airquality/charts.css">
-            <link rel="stylesheet" type="text/css" href="css/airquality/statistics.css">
-            <link rel="stylesheet" type="text/css" href="css/airquality/texts.css">
-            <!-- SHARING -->
-            <link rel="stylesheet" type="text/css" href="css/sharing/maps.css">
-            <link rel="stylesheet" type="text/css" href="css/sharing/charts.css">
-            <link rel="stylesheet" type="text/css" href="css/sharing/statistics.css">
-            <link rel="stylesheet" type="text/css" href="css/sharing/texts.css">
+        <link rel="stylesheet" type="text/css" href="./css/maps.css">
+        <link rel="stylesheet" type="text/css" href="./css/charts.css">
+        <link rel="stylesheet" type="text/css" href="./css/statistics.css">
+        <link rel="stylesheet" type="text/css" href="./css/texts.css">
     </head>
 
     <body>
 
         <div id="canvas">
 
+            <div id="loader">
+                <p class="animated fadeInUp slower">Loading the awesomness..</p>
+            </div>
             <div id="categories">
-                <div id="category-waste" class="position-home">
+                <div id="category-waste" class="position-home hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1054.48 910.21" style="overflow: visible;"> <defs>  <style>.cls-waste-1 { opacity: 0.8; fill: url(#gradient_waste_1);}  .cls-waste-2 { opacity: 0.8; fill: url(#gradient_waste_2);}  .cls-waste-3 { opacity: 0.8; fill: url(#gradient_waste_3);}  </style>  <linearGradient id="gradient_waste_1" x1="449.45" y1="-42.11" x2="681.46" y2="934.66"gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5FC6CA"></stop><stop offset="1" stop-color="#5798D2"></stop>  </linearGradient>  <linearGradient id="gradient_waste_2" x1="449.45" y1="-42.11" x2="681.46" y2="934.66"gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#E6F07B"></stop><stop offset="1" stop-color="#95D6D7"></stop>  </linearGradient>  <linearGradient id="gradient_waste_3" x1="449.45" y1="-42.11" x2="681.46" y2="934.66"gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#5fc687"></stop><stop offset="1" stop-color="#5798d2"></stop>  </linearGradient> </defs> <title>waste_shape</title> <g id="layer_waste" class="layer-waste" data-name="Vrstva 2">  <path class="cls-waste-1 shape-waste" d="M860.32,637.49c-73.5,91.32-138.44,278.9-302.71,272.57s-167.68-117-269.44-206.45C252.25,672,181.47,613.12,119,540.74,11.35,415.93-71.48,251,92.65,117.54Q108,105,126.27,92.9c82.34-54.43,690.34-190.23,865,23.11C1164.84,328.09,933.82,546.16,860.32,637.49Z">  </path>  <path class="cls-waste-2 shape-waste" d="M860.32,637.49c-73.5,91.32-138.44,278.9-302.71,272.57s-167.68-117-269.44-206.45C252.25,672,181.47,613.12,119,540.74,11.35,415.93-71.48,251,92.65,117.54Q108,105,126.27,92.9c82.34-54.43,690.34-190.23,865,23.11C1164.84,328.09,933.82,546.16,860.32,637.49Z">  </path>  <path class="cls-waste-3 shape-waste" d="M860.32,637.49c-73.5,91.32-138.44,278.9-302.71,272.57s-167.68-117-269.44-206.45C252.25,672,181.47,613.12,119,540.74,11.35,415.93-71.48,251,92.65,117.54Q108,105,126.27,92.9c82.34-54.43,690.34-190.23,865,23.11C1164.84,328.09,933.82,546.16,860.32,637.49Z">  </path> </g> </svg>
                     <h1>WASTE<br>MONITORING</h1>
                     <h3>IN REALTIME</h3>
                 </div>
 
-                <div id="category-parking" class="position-home">
+                <div id="category-parking" class="position-home hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 938.62 1002.92"  style="overflow: visible;">  <defs><style> .cls-parking-1 {  opacity: 0.8;  fill: url(#gradient_parking_1); } .cls-parking-2 {  opacity: 0.8;  fill: url(#gradient_parking_2); } .cls-parking-3 {  opacity: 0.8;  fill: url(#gradient_parking_3); }</style><linearGradient id="gradient_parking_1" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#001E6A"></stop> <stop offset="1" stop-color="#005DE9"></stop></linearGradient><linearGradient id="gradient_parking_2" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#0057FF"></stop> <stop offset="1" stop-color="#3E73C8"></stop></linearGradient><linearGradient id="gradient_parking_3" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#6891D4"></stop> <stop offset="1" stop-color="#1861BD"></stop></linearGradient>  </defs>  <title>parking_shape</title>  <g id="layer_parking" class="layer-parking" data-name="Vrstva 2"><path class="cls-parking-1 shape-parking" d="M21.36,493.13c-43.1-123.5-37.3-301.34,174-411,169.15-87.78,407.06-122.64,565-16,143,96.55,238.67,270.63,134,464-189.16,349.49-323.61,529.25-497,457-158.94-66.22-47-163.45-189-336C163,595.94,70.56,634.1,21.36,493.13Z"></path><path class="cls-parking-2 shape-parking" d="M21.36,493.13c-43.1-123.5-37.3-301.34,174-411,169.15-87.78,407.06-122.64,565-16,143,96.55,238.67,270.63,134,464-189.16,349.49-323.61,529.25-497,457-158.94-66.22-47-163.45-189-336C163,595.94,70.56,634.1,21.36,493.13Z"></path><path class="cls-parking-3 shape-parking" d="M21.36,493.13c-43.1-123.5-37.3-301.34,174-411,169.15-87.78,407.06-122.64,565-16,143,96.55,238.67,270.63,134,464-189.16,349.49-323.61,529.25-497,457-158.94-66.22-47-163.45-189-336C163,595.94,70.56,634.1,21.36,493.13Z"></path>  </g> </svg>
                     <h1>PARKING<br>SITUATION</h1>
                     <h3>IN REALTIME</h3>
                 </div>
 
-                <div id="category-transport" class="position-home">
+                <div id="category-transport" class="position-home hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 938.62 1002.92"  style="overflow: visible;">  <defs><style> .cls-transport-1 {  opacity: 0.8;  fill: url(#gradient_transport_1); } .cls-transport-2 {  opacity: 0.8;  fill: url(#gradient_transport_2); } .cls-transport-3 {  opacity: 0.8;  fill: url(#gradient_transport_3); }</style><linearGradient id="gradient_transport_1" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#FEC753"></stop> <stop offset="1" stop-color="#FEA500"></stop></linearGradient><linearGradient id="gradient_transport_2" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#FDC872"></stop> <stop offset="1" stop-color="#F57F43"></stop></linearGradient><linearGradient id="gradient_transport_3" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#FDC872"></stop> <stop offset="1" stop-color="#F57F43"></stop></linearGradient>  </defs>  <title>transport_shape</title>  <g id="layer_transport" class="layer-transport" data-name="Vrstva 2"><path class="cls-transport-1 shape-transport" d="M1151.76,830.94C1076.57,997.42,853.09,1025.49,731.68,889c-23.68-26.61-46.94-59-68.81-98.55-137.81-249-469.29-263.35-599-390.4C-76.94,262.16,15.46-56.21,337.42,47.59,629.37,141.72,733.77-71.1,964.2,26c167.69,70.7,116.89,199.43,103.89,364.83C1056.26,541.28,1228.71,660.55,1151.76,830.94Z"></path><path class="cls-transport-2 shape-transport" d="M1151.76,830.94C1076.57,997.42,853.09,1025.49,731.68,889c-23.68-26.61-46.94-59-68.81-98.55-137.81-249-469.29-263.35-599-390.4C-76.94,262.16,15.46-56.21,337.42,47.59,629.37,141.72,733.77-71.1,964.2,26c167.69,70.7,116.89,199.43,103.89,364.83C1056.26,541.28,1228.71,660.55,1151.76,830.94Z"></path><path class="cls-transport-3 shape-transport" d="M1151.76,830.94C1076.57,997.42,853.09,1025.49,731.68,889c-23.68-26.61-46.94-59-68.81-98.55-137.81-249-469.29-263.35-599-390.4C-76.94,262.16,15.46-56.21,337.42,47.59,629.37,141.72,733.77-71.1,964.2,26c167.69,70.7,116.89,199.43,103.89,364.83C1056.26,541.28,1228.71,660.55,1151.76,830.94Z"></path>  </g> </svg>
                     <h1>PUBLIC<br>TRANSPORT</h1>
                     <h3>IN REALTIME</h3>
                 </div>
 
-                <div id="category-sharing" class="position-home">
+                <div id="category-sharing" class="position-home hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 938.62 1002.92" style="overflow: visible;"> <defs> <style> .cls-sharing-1 {  opacity: 0.8;  fill: url(#gradient_sharing_1); } .cls-sharing-2 {  opacity: 0.8;  fill: url(#gradient_sharing_2); } .cls-sharing-3 {  opacity: 0.8;  fill: url(#gradient_sharing_3); } </style> <linearGradient id="gradient_sharing_1" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#5A006A"></stop> <stop offset="1" stop-color="#F9AAFF"></stop> </linearGradient> <linearGradient id="gradient_sharing_2" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#54007F"></stop> <stop offset="1" stop-color="#A33FFF"></stop> </linearGradient> <linearGradient id="gradient_sharing_3" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#EC7FFF"></stop> <stop offset="1" stop-color="#907FAE"></stop> </linearGradient> </defs> <title>sharing_shape</title> <g id="layer_sharing" class="layer-sharing" data-name="Vrstva 2"> <path class="cls-sharing-1 shape-sharing" d="M1079,850.93c-75.19,166.49-395.06,87.28-536.73-28-142.65-116.11-302.28-20.95-432-148-140.8-137.89-193-684.8,129-581,292,94.13,513.57-169.14,744-72,167.69,70.69,25.06,223.58,12.06,389C983.48,561.28,1155.93,680.55,1079,850.93Z"> </path> <path class="cls-sharing-2 shape-sharing" d="M1079,850.93c-75.19,166.49-395.06,87.28-536.73-28-142.65-116.11-302.28-20.95-432-148-140.8-137.89-193-684.8,129-581,292,94.13,513.57-169.14,744-72,167.69,70.69,25.06,223.58,12.06,389C983.48,561.28,1155.93,680.55,1079,850.93Z"> </path> <path class="cls-sharing-3 shape-sharing" d="M1079,850.93c-75.19,166.49-395.06,87.28-536.73-28-142.65-116.11-302.28-20.95-432-148-140.8-137.89-193-684.8,129-581,292,94.13,513.57-169.14,744-72,167.69,70.69,25.06,223.58,12.06,389C983.48,561.28,1155.93,680.55,1079,850.93Z"> </path> </g> </svg>
                     <h1>SHARING<br>SERVICES</h1>
                     <h3>IN REALTIME</h3>
                 </div>
 
-                <div id="category-airquality" class="position-home">
+                <div id="category-airquality" class="position-home hidden">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 938.62 1002.92" style="overflow: visible;"> <defs> <style> .cls-airquality-1 { opacity: 0.8; fill: url(#gradient_airquality_1); } .cls-airquality-2 { opacity: 0.8; fill: url(#gradient_airquality_2); } .cls-airquality-3 { opacity: 0.8; fill: url(#gradient_airquality_3); } </style> <linearGradient id="gradient_airquality_1" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#FF558D"></stop> <stop offset="1" stop-color="#F8C7D6"></stop> </linearGradient> <linearGradient id="gradient_airquality_2" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#F20045"></stop> <stop offset="1" stop-color="#F47E9F"></stop> </linearGradient> <linearGradient id="gradient_airquality_3" x1="449.45" y1="-42.11" x2="681.46" y2="934.66" gradientUnits="userSpaceOnUse"> <stop offset="0" stop-color="#F8686E"></stop> <stop offset="1" stop-color="#FF3100"></stop> </linearGradient> </defs> <title>airquality_shape</title> <g id="layer_airquality" class="layer-airquality" data-name="Vrstva 2"> <path class="cls-airquality-1 shape-airquality" d="M959.61,571.29C924.47,625.76,952,705,863.94,736.66S678.8,666.56,599.53,642.1s-217.06,27.51-217.06,27.51S254.63,705,146.74,652.8C64.78,613.18-5.62,523,.35,328.31c.07-1.49.07-2.9.21-4.3C9.56,88.29,152.65,17.1,285.46,2.32,395.1-9.95,503.59,27.1,596.44,96c138.65,102.78,221.29,43.14,221.29,43.14s248.09-98.31,322.93,103.17S994.68,516.89,959.61,571.29Z"> </path> <path class="cls-airquality-2 shape-airquality" d="M959.61,571.29C924.47,625.76,952,705,863.94,736.66S678.8,666.56,599.53,642.1s-217.06,27.51-217.06,27.51S254.63,705,146.74,652.8C64.78,613.18-5.62,523,.35,328.31c.07-1.49.07-2.9.21-4.3C9.56,88.29,152.65,17.1,285.46,2.32,395.1-9.95,503.59,27.1,596.44,96c138.65,102.78,221.29,43.14,221.29,43.14s248.09-98.31,322.93,103.17S994.68,516.89,959.61,571.29Z"> </path> <path class="cls-airquality-3 shape-airquality" d="M959.61,571.29C924.47,625.76,952,705,863.94,736.66S678.8,666.56,599.53,642.1s-217.06,27.51-217.06,27.51S254.63,705,146.74,652.8C64.78,613.18-5.62,523,.35,328.31c.07-1.49.07-2.9.21-4.3C9.56,88.29,152.65,17.1,285.46,2.32,395.1-9.95,503.59,27.1,596.44,96c138.65,102.78,221.29,43.14,221.29,43.14s248.09-98.31,322.93,103.17S994.68,516.89,959.61,571.29Z"> </path> </g> </svg> 
-                    <h1>AIR QUALITY<br>MEASUREMENT</h1>
+                    <h1>CITY<br>ENVIRONMENT</h1>
                     <h3>IN REALTIME</h3>
                 </div>
             </div>
@@ -88,13 +72,14 @@
                     Only possible with
                     <br>Data Platform Golemio
                     <br>and its passioned team.
+                    <br>&copy; Operátor ICT
                 </h3>
                 <p>
                     Source code on github.com
                     <br>&copy; Mapbox
                     <br>&copy; OpenStreetMaps
                     <br>and other MIT libs...
-                    <br>Music 🙌 by Sam Gittis.
+                    <br>Music by Sam Gittis 🙌.
                 </p>
             </div>
 
@@ -102,87 +87,31 @@
                 <div class="maps"></div>
                 <div class="charts"></div>
                 <div class="statistics"></div>
-                <div class="texts">
-                    <div id="text-prparking-right">
-                        <div id="text-prparking-info">
-                            <h1>P+R Parking</h1>
-                            <p>In Prague there is regulated
-                                on-street parking in downtown 
-                                and few other districts called
-                                parking zones.<br>
-                                They are few type, for residents
-                                only, for visitors only, and mixed.
-                                Residents can buy long-term card,
-                                visitors buy short-term tickets.</p>
-                        </div>
-                        <div id="text-prparking-averageoccupancytitle">
-                            <h2>AVERAGE OCCUPANCY</h2>
-                        </div>
-                        <div id="text-prparking-parkinglotstatistics">
-                            <h2>ADDITIONAL INFORMATION</h2>
-                        </div>
-                    </div>
-                </div>
+                <div class="texts"></div>
             </div>
-
-
             <div id="container-transport" class="container transparent">
-                    <div class="maps"></div>
-                    <div class="charts"></div>
-                    <div class="statistics"></div>
-                    <div class="texts">
-                        <div id="text-transport-all">
-                            <div id="text-transport-info">
-                                <h1>All tracked trips</h1>
-                                <p>In Prague there is regulated
-                                    on-street parking in downtown 
-                                    and few other districts called
-                                    parking zones.<br>
-                                    They are few type, for residents
-                                    only, for visitors only, and mixed.
-                                    Residents can buy long-term card,
-                                    visitors buy short-term tickets.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
+                <div class="maps"></div>
+                <div class="charts"></div>
+                <div class="statistics"></div>
+                <div class="texts"></div>
+            </div>
             <div id="container-waste" class="container transparent">
                 <div class="maps"></div>
                 <div class="charts"></div>
                 <div class="statistics"></div>
-                <div class="texts">
-                    <div id="text-waste-all">
-                        <div id="text-waste-info">
-                            <h1>CHMI stations</h1>
-                            <p>In Prague there is regulated
-                                on-street parking in downtown 
-                                and few other districts called
-                                parking zones.<br>
-                                They are few type, for residents
-                                only, for visitors only, and mixed.
-                                Residents can buy long-term card,
-                                visitors buy short-term tickets.</p>
-                        </div>
-                    </div>
-                </div>
+                <div class="texts"></div>
             </div>
-
             <div id="container-airquality" class="container transparent">
                 <div class="maps"></div>
                 <div class="charts"></div>
                 <div class="statistics"></div>
-                <div class="texts">
-                </div>
+                <div class="texts"></div>
             </div>
-
             <div id="container-sharing" class="container transparent">
                 <div class="maps"></div>
                 <div class="charts"></div>
                 <div class="statistics"></div>
-                <div class="texts">
-                </div>
+                <div class="texts"></div>
             </div>
         </div>
 
@@ -202,55 +131,64 @@
     </body>
 
     <!-- MOCK DATA -->
-    <script src="mockdata/datagolemio.js"></script>
+    <script src="./mockdata/datagolemio.js"></script>
+    <script src="./mockdata/datafunctions.js"></script>
 
     <!-- LIBS -->
-    <script src="js/libs/moment.min.js"></script>
-    <script src="js/libs/moment-timezone.min.js"></script>
-    <script src="js/libs/apexcharts.min.js"></script>
-    <script src="js/libs/countUp.min.js"></script>
-    <script src="js/libs/baffle.js"></script>
-    <link href='css/mapbox-gl.css' rel='stylesheet' />
-    <script src='js/libs/mapbox-gl.js'></script>
-    <script src="js/libs/turf.min.js"></script>
+    <script src="./js/libs/moment.min.js"></script>
+    <script src="./js/libs/moment-timezone.min.js"></script>
+    <script src="./js/libs/apexcharts.min.js"></script>
+    <script src="./js/libs/countUp.min.js"></script>
+    <script src="./js/libs/baffle.js"></script>
+    <link href='./css/mapbox-gl.css' rel='stylesheet' />
+    <script src='./js/libs/mapbox-gl.js'></script>
+    <script src="./js/libs/turf.min.js"></script>
 
     <!-- DEFAULT SCRIPTS -->
-    <script src="js/audio.js"></script>
-    <script src="js/defaults.js"></script>
-    <script src="js/charts.js"></script>
-    <script src="js/texts.js"></script>
-    <script src="js/statistics.js"></script>
-    <script src="js/client.js"></script>
-    <script src="js/containers.js"></script>
-    <script src="js/storage.js"></script>
-    <script src="js/maps.js"></script>
-    <script src="js/message.js"></script>
-    <script src="js/shapes.js"></script>
-    <script src="js/screenplay.js"></script>
+    <script src="./js/audio.js"></script>
+    <script src="./js/defaults.js"></script>
+    <script src="./js/charts.js"></script>
+    <script src="./js/texts.js"></script>
+    <script src="./js/statistics.js"></script>
+    <script src="./js/client.js"></script>
+    <script src="./js/containers.js"></script>
+    <script src="./js/storage.js"></script>
+    <script src="./js/maps.js"></script>
+    <script src="./js/message.js"></script>
+    <script src="./js/shapes.js"></script>
+    <script src="./js/screenplay.js"></script>
 
         <!-- PARKING SCRIPTS -->
-        <script src="js/parking/charts.js"></script>
-        <script src="js/parking/statistics.js"></script>
-        <script src="js/parking/maps.js"></script>
-
-        <!-- TRANSPORT SCRIPTS -->
-        <script src="js/transport/charts.js"></script>
-        <script src="js/transport/statistics.js"></script>
-        <script src="js/transport/maps.js"></script>
+        <script src="./js/parking/texts.js"></script>
+        <script src="./js/parking/charts.js"></script>
+        <script src="./js/parking/statistics.js"></script>
+        <script src="./js/parking/maps.js"></script>
 
         <!-- AIRQUALITY SCRIPTS -->
-        <script src="js/airquality/texts.js"></script>
-        <script src="js/airquality/charts.js"></script>
-        <script src="js/airquality/statistics.js"></script>
-        <script src="js/airquality/maps.js"></script>
+        <script src="./js/airquality/texts.js"></script>
+        <script src="./js/airquality/charts.js"></script>
+        <script src="./js/airquality/statistics.js"></script>
+        <script src="./js/airquality/maps.js"></script>
+
+        <!-- WASTE SCRIPTS -->
+        <script src="./js/waste/texts.js"></script>
+        <script src="./js/waste/charts.js"></script>
+        <script src="./js/waste/statistics.js"></script>
+        <script src="./js/waste/maps.js"></script>
+
+        <!-- TRANSPORT SCRIPTS -->
+        <script src="./js/transport/texts.js"></script>
+        <script src="./js/transport/charts.js"></script>
+        <script src="./js/transport/statistics.js"></script>
+        <script src="./js/transport/maps.js"></script>
 
         <!-- SHARING SCRIPTS -->
-        <script src="js/sharing/texts.js"></script>
-        <script src="js/sharing/charts.js"></script>
-        <script src="js/sharing/statistics.js"></script>
-        <script src="js/sharing/maps.js"></script>
+        <script src="./js/sharing/texts.js"></script>
+        <script src="./js/sharing/charts.js"></script>
+        <script src="./js/sharing/statistics.js"></script>
+        <script src="./js/sharing/maps.js"></script>
 
     <!-- MAIN SCRIPTS -->
-    <script src="js/main.js"></script>
+    <script src="./js/main.js"></script>
 
 </html>

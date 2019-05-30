@@ -23,12 +23,22 @@ STATISTICS
     -webkit-text-fill-color: transparent;
 }
 .text-red-grad {
-    background: -webkit-linear-gradient(45deg, rgb(255, 31, 0), rgba(255, 30, 0, 0.475));
+    background: -webkit-linear-gradient(45deg, rgb(255, 31, 0), rgba(255, 30, 0, 0.75));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 .text-white-grad {
     background: white;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.text-green-grad {
+    background: -webkit-linear-gradient(45deg, rgb(100, 239, 209), rgba(100, 239, 209, 0.75));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.text-orange-grad {
+    background: -webkit-linear-gradient(45deg, rgb(255, 199, 89), rgba(255, 199, 89, 0.75));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }

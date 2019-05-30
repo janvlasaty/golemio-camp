@@ -6,18 +6,13 @@ AirqualityTexts.add({
         x: 900,
         y: 20,
     },
-    width: 500,
+    width: 580,
     data: {
         type: 'headerPlusInfo',
-        header: 'CHMI stations',
-        paragraph: `In Prague there is regulated
-        on-street parking in downtown 
-        and few other districts called
-        parking zones.<br>
-        They are few type, for residents
-        only, for visitors only, and mixed.
-        Residents can buy long-term card,
-        visitors buy short-term tickets.`
+        header: 'CHMI AIM stations',
+        paragraph: `The network of 17 AIM (automated imission monitoring) stations is operated by CHMI (Czech Hydrometeorological Institute) in the Prague metropolitan area. 
+        It monitors selected pollutants (NO, SO2, PM, and O3). 
+        These measurements are then used for the air quality index to give quick information about the current air pollution situation.`
     }
 })
 AirqualityTexts.add({
@@ -30,14 +25,7 @@ AirqualityTexts.add({
     data: {
         type: 'headerPlusInfo',
         header: 'Karlin sensor network',
-        paragraph: `In Prague there is regulated
-        on-street parking in downtown 
-        and few other districts called
-        parking zones.<br>
-        They are few type, for residents
-        only, for visitors only, and mixed.
-        Residents can buy long-term card,
-        visitors buy short-term tickets.`
+        paragraph: `While CHMI monitors air quality on a city-wide level, Karlin network of affordable sensors can measure the same variables but on street level, giving residents a more detailed picture of the air pollution situation.`
     }
 })
 

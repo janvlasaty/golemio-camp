@@ -4,8 +4,18 @@ AirqualityStatistics.addFrame(
     {
         id: 'CHMI',
         position: {
-            x: 900,
-            y: 650,
+            x: 800,
+            y: 680,
+        }
+    }
+)
+
+AirqualityStatistics.addFrame(
+    {
+        id: 'Karlin',
+        position: {
+            x: 6600,
+            y: 750,
         }
     }
 )
@@ -21,7 +31,7 @@ AirqualityStatistics.addStatistic(
             y: 0,
         },
         size: {
-            width: 500
+            width: 700
         },
         data: {
             type: 'text',
@@ -29,6 +39,31 @@ AirqualityStatistics.addStatistic(
         options: {
             text: '--address--',
             title: 'ADDRESS'
+        },
+    }
+)
+
+
+AirqualityStatistics.addStatistic(
+    {
+        active: true,
+        id: 'KarlinCount',
+        frame: 'Karlin',
+        classList: ['text-red-grad'],
+        position: {
+            x: 0,
+            y: 0,
+        },
+        size: {
+            width: 500
+        },
+        data: {
+            type: 'number',
+        },
+        options: {
+            value: 0,
+            decimalPlaces: 0,
+            title: 'SENSOR COUNT'
         },
     }
 )

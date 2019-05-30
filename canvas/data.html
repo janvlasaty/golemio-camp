@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta http-equiv=“Pragma” content=”no-cache”>
+        <meta http-equiv=“Expires” content=”-1″>
+        <meta http-equiv=“CACHE-CONTROL” content=”NO-CACHE”>
+        <title>CAMP Prague NOW</title>
+    </head>
+
+    <body>
+             
+    <link href='css/mapbox-gl.css' rel='stylesheet' />
+    <script src='js/libs/mapbox-gl.js'></script>
+            <style>
+            #fly {
+            display: block;
+            position: relative;
+            margin: 0px auto;
+            width: 50%;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 3px;
+            font-size: 12px;
+            text-align: center;
+            color: #fff;
+            background: #ee8a65;
+            }
+            #map {
+            width: 800px;
+            height: 600px;
+            }
+            </style>
+            <div id='map'></div>
+            <br/>
+            <button id='fly'>Fly</button>
+            <!-- <script>
+                    mapboxgl.accessToken =
+                        'pk.eyJ1IjoiamFudmxhc2F0eSIsImEiOiJjamRibTJ5aTUyNmw2MndxbzI1OWV1cnM0In0.Xb_130SZJN27DMVhOAnfSQ';
+                    
+            var start = [-74.50, 40];
+            var end = [74.50, 40];
+            var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11',
+            center: start,
+            zoom: 9
+            });
+             
+            var isAtStart = true;
+             
+            document.getElementById('fly').addEventListener('click', function() {
+            // depending on whether we're currently at point a or b, aim for
+            // point a or b
+            var target = isAtStart ? end : start;
+             
+            // and now we're at the opposite point
+            isAtStart = !isAtStart;
+             
+            map.flyTo({
+            // These options control the ending camera position: centered at
+            // the target, at zoom level 9, and north up.
+            center: target,
+            zoom: 9,
+            bearing: 0,
+             
+            // These options control the flight curve, making it move
+            // slowly and zoom out almost completely before starting
+            // to pan.
+            speed: 0.2, // make the flying slow
+            curve: 1, // change the speed at which it zooms out
+             
+            // This can be any easing function: it takes a number between
+            // 0 and 1 and returns another number between 0 and 1.
+            easing: function (t) { return t; }
+            });
+            });
+
+            var EasingFunctions = {
+                // no easing, no acceleration
+                linear: function (t) { return t },
+                // accelerating from zero velocity
+                easeInQuad: function (t) { return t*t },
+                // decelerating to zero velocity
+                easeOutQuad: function (t) { return t*(2-t) },
+                // acceleration until halfway, then deceleration
+                easeInOutQuad: function (t) { return t<.5 ? 2*t*t : -1+(4-2*t)*t },
+                // accelerating from zero velocity 
+                easeInCubic: function (t) { return t*t*t },
+                // decelerating to zero velocity 
+                easeOutCubic: function (t) { return (--t)*t*t+1 },
+                // acceleration until halfway, then deceleration 
+                easeInOutCubic: function (t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 },
+                // accelerating from zero velocity 
+                easeInQuart: function (t) { return t*t*t*t },
+                // decelerating to zero velocity 
+                easeOutQuart: function (t) { return 1-(--t)*t*t*t },
+                // acceleration until halfway, then deceleration
+                easeInOutQuart: function (t) { return t<.5 ? 8*t*t*t*t : 1-8*(--t)*t*t*t },
+                // accelerating from zero velocity
+                easeInQuint: function (t) { return t*t*t*t*t },
+                // decelerating to zero velocity
+                easeOutQuint: function (t) { return 1+(--t)*t*t*t*t },
+                // acceleration until halfway, then deceleration 
+                easeInOutQuint: function (t) { return t<.5 ? 16*t*t*t*t*t : 1+16*(--t)*t*t*t*t }
+            }
+
+
+            function setBearing(stopBearing=0,duration=3000) {
+                var startBearing = (map.getBearing()%360+360)%360
+                stopBearing = (stopBearing%360+360)%360
+                var difference = Math.abs(stopBearing - startBearing)
+
+                var throughZero = difference > 180
+                var clockwise = startBearing < stopBearing
+                if (throughZero) clockwise = !clockwise
+
+                if (throughZero) difference = 360-difference
+                
+                Array(Math.round(duration/20)).fill().forEach((t,i,a)=>{
+                    var progress = i/a.length
+                    setTimeout(function(){
+                        // if (!throughZero)
+                        map.setBearing(startBearing+EasingFunctions.easeInOutQuad(progress)*difference*((clockwise?1:-1)))
+                    },progress*duration)
+                })
+                setTimeout(function(){
+                    map.setBearing(stopBearing)
+                },duration)
+            }
+            </script> -->
+    </body>
+
+    <!-- MOCK DATA -->
+    <script src="mockdata/datagolemio.js"></script>
+    <script src="mockdata/datafunctions.js"></script>
+
+    <!-- LIBS -->
+    <script src="js/libs/moment.min.js"></script>
+    <script src="js/libs/moment-timezone.min.js"></script>
+    <script src="js/libs/apexcharts.min.js"></script>
+    <script src="js/libs/countUp.min.js"></script>
+    <script src="js/libs/baffle.js"></script>
+    <link href='css/mapbox-gl.css' rel='stylesheet' />
+    <script src='js/libs/mapbox-gl.js'></script>
+    <script src="js/libs/turf.min.js"></script>
+
+
+</html>

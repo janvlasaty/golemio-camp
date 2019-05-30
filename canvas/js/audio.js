@@ -2,8 +2,6 @@
 const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioCtx = new AudioContext();
 
-
-
 // load some sound
 var Audio = {
     playing: false,
@@ -13,11 +11,39 @@ var Audio = {
 var audios = [
     {
         id: 'default',
-        path: 'audio/outfoxing.mp3',
+        path: './audio/outfoxing.mp3',
     },
     {
         id: 'paulie',
-        path: 'audio/paulie_short.mp3',
+        path: './audio/paulie_short.mp3',
+    },
+    {
+        id: 'intro',
+        path: './audio/intro.mp3',
+    },
+    {
+        id: 'airquality',
+        path: './audio/airquality.mp3',
+    },
+    {
+        id: 'sharing',
+        path: './audio/sharing.mp3',
+    },
+    {
+        id: 'parking',
+        path: './audio/parking.mp3',
+    },
+    {
+        id: 'transport',
+        path: './audio/transport.mp3',
+    },
+    {
+        id: 'waste',
+        path: './audio/waste.mp3',
+    },
+    {
+        id: 'citynoise',
+        path: './audio/citynoise.mp3',
     }
 ]
 audios.forEach((e,i)=>{
@@ -29,7 +55,9 @@ audios.forEach((e,i)=>{
     })
     Audio.tracks[i].element = document.createElement('audio')
     Audio.tracks[i].element.id = e.id
-    Audio.tracks[i].element.src = e.path
+    Audio.tracks[i].element.src = e.path     
+    Audio.tracks[i].element.type = 'audio/mpeg'
+    Audio.tracks[i].element.crossorigin = "anonymous"
     document.querySelector('#audios').appendChild(Audio.tracks[i].element)
     Audio.tracks[i].source = audioCtx.createMediaElementSource(Audio.tracks[i].element)
     Audio.tracks[i].gainNode = audioCtx.createGain();
@@ -56,6 +84,7 @@ Audio.play = function(id) {
     this.resumeCtx()
     this.tracks.filter(e=>e.id==id).forEach(e => {
         if (!e.playing) {
+            e.gainNode.gain.value = 1
             e.element.play()
             e.playing = true;
         }
@@ -85,19 +114,22 @@ Audio.replay = function(id) {
     this.stop(id)
     this.play(id)
 }
-Audio.fadeOut = function(id,duration) {
+Audio.fadeOut = function(id='',duration=2000) {
     this.resumeCtx()
     var _this = this
-    this.tracks.filter(e=>e.id==id).forEach(e => {
-        var steps = Array(Math.round(duration/100)).fill().map((e,i,a)=>(1-1/a.length*(i+1)))
-        steps.forEach((s,i)=>{
-            setTimeout(function(){
-                e.gainNode.gain.value = s
-            },duration/steps.length*(i+1))
+    this.tracks.filter(e=>e.id==id || id == '').forEach(e => {
+        if (e.playing) {
+            var arraySteps = Array(Math.round(duration/100)).fill()
+            var steps = arraySteps.map((s,i,a)=>(e.gainNode.gain.value*(1-1/a.length*(i))))
+            steps.forEach((s,i)=>{
+                setTimeout(function(){
+                    e.gainNode.gain.value = s
+                },duration/steps.length*(i))
+            })
             setTimeout(function(){
                 _this.stop(id)
             },duration)
-        })
+        }
     });
 }
 Audio.setGain = function(id,gain) {

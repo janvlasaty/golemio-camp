@@ -43,7 +43,7 @@ class Charts {
         var hit = false
         this.charts.forEach((e,i,a) => {
             if (specify == '' ? true : e.id == specify)
-                if (a[i].element.className.indexOf('fadeOut')<0) {
+                if (a[i].element.className.indexOf('fadeOut')<0 && a[i].element.className.indexOf('transparent')<0) {
                     a[i].element.className = 'animated fadeOut ' + speed
                     hit = true
                 }
@@ -55,12 +55,12 @@ class Charts {
         var hitIndex = 0
         this.charts.forEach((e,i,a) => {
             if (specify == '' ? true : e.id == specify) {
-                setTimeout(function(){
-                    if (a[i].element.className.indexOf('fadeIn')<0) {
-                        a[i].element.className = 'animated fadeIn ' + speed
-                    }
-                },delay+delayBetween*hitIndex)
-                hitIndex++
+                if (a[i].element.className.indexOf('fadeIn')<0) {
+                    setTimeout(function(){
+                            a[i].element.className = 'animated fadeIn ' + speed
+                    },delay+delayBetween*hitIndex)
+                    hitIndex++
+                }
             }
         })
         return hitIndex

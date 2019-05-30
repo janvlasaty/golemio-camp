@@ -75,8 +75,8 @@ ParkingMaps.add({
                 render: function () {
                     var t = (performance.now() % duration) / duration;
         
-                    var radius = size / 4 * 0.5;
-                    var outerRadius = size / 4 * 2 * t + radius;
+                    var radius = size / 6;
+                    var outerRadius = size / 3 * t + radius;
                     var context = this.context;
         
                     // draw outer circle

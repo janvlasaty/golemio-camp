@@ -4,8 +4,8 @@
 window.WebSocket = window.WebSocket || window.MozWebSocket;
 
 // var server = '10.180.0.105:1337';
-var server = '10.0.0.11:1337'
-// var server = 'localhost:1337';
+// var server = '10.0.0.11:1337'
+var server = 'campserver.francecentral.cloudapp.azure.com:8080';
 var connection = {}
 function connect() {
 
@@ -13,14 +13,14 @@ function connect() {
 
     connection.onopen = function () {
         // connection is opened and ready to use
-        console.log('Connected as canvas!!');
+        console.log('Connected as canvas!');
     };
 
     connection.onclose = function(e) {
-        console.log('Socket is closed. Reconnect will be attempted in 10 seconds.', e.reason);
+        console.log('Socket is closed. Reconnect will be attempted in 30 seconds.', e.reason);
         setTimeout(function() {
           connect();
-        }, 10000);
+        }, 30000);
       };
 
     connection.onerror = function (error) {
@@ -43,8 +43,8 @@ function connect() {
         // handle incoming message
     };
 }
-  
-connect();
+setTimeout(function() { connect(); }, 10000)
+
 
 function react(message) {
     switch (message.metadata.type) {

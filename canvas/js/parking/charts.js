@@ -5,7 +5,7 @@ ParkingCharts.addChart({
   id: 'parkingCapacityRatio',
   className: 'transparent',
   position: {
-    x: 620,
+    x: 5920,
     y: 430,
   },
   size: {
@@ -97,7 +97,7 @@ ParkingCharts.addChart({
   id: 'parkingOccupancyPast48h',
   className: 'transparent',
   position: {
-    x: 150,
+    x: 5450,
     y: 50,
   },
   size: {
@@ -105,8 +105,6 @@ ParkingCharts.addChart({
   },
   data: {
     seriesType: 'series-one',
-    seriesName: 'Parking Occupancy',
-    source: 'lastOccupancy'
   },
   options: {
     chart: {
@@ -130,7 +128,7 @@ ParkingCharts.addChart({
     },
     series: [{
       name: 'Parking Occupancy',
-      data: storage.lastOccupancy
+      data: []
     }],
     markers: {
       size: 0,
@@ -175,7 +173,7 @@ ParkingCharts.addChart({
         style: {
           color: 'rgba(255,255,255,.5)',
           fontSize: '24px',
-          fontFamily: 'Exo',
+          fontFamily: 'ExoRegular',
         },
         offsetX: 0,
         formatter: function (val) {
@@ -194,8 +192,6 @@ ParkingCharts.addChart({
     xaxis: {
       type: 'datetime',
       tickAmount: 5,
-      min: Math.min(...storage.lastOccupancy.map(o => o[0])),
-      max: Math.max(...storage.lastOccupancy.map(o => o[0])),
       labels: {
         rotate: 0,
         rotateAlways: false,
@@ -205,7 +201,7 @@ ParkingCharts.addChart({
         style: {
           colors: Array(10).fill().map(a => 'rgba(255,255,255,.5)'),
           fontSize: '24px',
-          fontFamily: 'Exo',
+          fontFamily: 'ExoRegular',
         },
         offsetY: 10,
       },
@@ -246,7 +242,7 @@ Object.keys(Defaults.dayNames).forEach(
     id: 'parkingAverageOccupancyBar-' + d,
     className: 'transparent',
     position: {
-      x: 1100,
+      x: 6400,
       y: 65 + d * 150,
     },
     size: {
@@ -385,30 +381,5 @@ Object.keys(Defaults.dayNames).forEach(
     }
   })
 )
-
-//SPECIFIC UPDATE
-ParkingCharts.update = function (storage) {
-  this.charts.forEach((c, i, a) => {
-    switch (c.data.seriesType) {
-      case 'number':
-        a[i].chart.updateSeries([storage[c.data.source]])
-        break;
-      case 'series-one':
-        a[i].chart.updateSeries([{
-          name: c.data.seriesName,
-          data: storage[c.data.source]
-        }])
-        break;
-      case 'series-one-array':
-        a[i].chart.updateSeries([{
-          name: c.data.seriesName,
-          data: storage[c.data.source][c.data.arrayIndex]
-        }])
-        break;
-      default:
-        break;
-    }
-  })
-}
 
 ParkingCharts.renderCharts();

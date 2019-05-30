@@ -1,13 +1,13 @@
 var AirqualityCharts = new Charts('airquality')
 
-    //RADIALBAR
+//RADIALBAR
 AirqualityCharts.addChart({
   active: true,
   id: 'CHMIAirqualityIndex',
   className: 'transparent',
   position: {
     x: 900,
-    y: 800,
+    y: 830,
   },
   size: {
     width: 500
@@ -117,7 +117,7 @@ sensors.forEach((sensor,i)=>{
       id: 'CHMILine-'+sensor.type,
       className: 'transparent',
       position: {
-        x: 1500+i*650,
+        x: 1550+i*620,
         y: 50,
       },
       size: {
@@ -145,18 +145,7 @@ sensors.forEach((sensor,i)=>{
         },
         series: [{
           name: 'CHMI - '+sensor.type,
-          data: mockdata.airqualitystationsHistory.filter(
-            s=>
-              s.id=='AVYNA' 
-              && s.measurement.components.filter(c=>c.type==sensor.type)[0] != undefined
-            ).map(s=>{
-            //console.log(s)
-              var data = s.measurement.components.filter(c=>c.type==sensor.type)[0]
-                return {
-                  x: parseInt(s.updated_at),
-                  y: parseFloat(data.averaged_time.value),
-                }
-          })
+          data: []
         }],
         markers: {
           size: 0,
@@ -208,7 +197,7 @@ sensors.forEach((sensor,i)=>{
             style: {
               color: 'rgba(255,255,255,.5)',
               fontSize: '24px',
-              fontFamily: 'Exo',
+              fontFamily: 'ExoRegular',
             },
             offsetX: 0,
             formatter: function(val) {
@@ -227,8 +216,6 @@ sensors.forEach((sensor,i)=>{
         xaxis: {
           type: 'datetime',
           tickAmount: 5,
-          min: Math.min(...mockdata.airqualitystationsHistory.map(s=>s.updated_at)),
-          max: Math.max(...mockdata.airqualitystationsHistory.map(s=>s.updated_at)),
           labels: {
             rotate: 0,
             rotateAlways: false,
@@ -238,7 +225,166 @@ sensors.forEach((sensor,i)=>{
             style: {
               colors: Array(10).fill().map(a=>'rgba(255,255,255,.5)'),
               fontSize: '24px',
-              fontFamily: 'Exo',
+              fontFamily: 'ExoRegular',
+            },
+            offsetY: 10,
+          },
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false,
+          },
+        },
+        title: {
+          text: sensor.title,
+          align: 'left',
+          offsetX: 0,
+          style: {
+            color: 'white',
+            fontSize: '36px',
+            fontFamily: 'ExoBold'
+          }
+        },
+        tooltip: {
+          shared: true
+        },
+        legend: {
+          position: 'top',
+          horizontalAlign: 'right',
+          offsetX: -10
+        }
+      },
+  })
+})
+
+
+// LINE
+var sensorsKarlin = [
+  {
+    type: 'weather.temperature',
+    title: 'Temperature past 48H',
+    unit: '°C',
+  },
+  {
+    type: 'noise',
+    title: 'PM10 past 48H',
+    unit: 'dB',
+  },
+]
+sensorsKarlin.forEach((sensor,i)=>{
+  AirqualityCharts.addChart({
+      active: true,
+      id: 'KarlinLine-'+sensor.type,
+      className: 'transparent',
+      position: {
+        x: 4650+i*900,
+        y: 50,
+      },
+      size: {
+        width: 850
+      },
+      data: {
+        seriesType: 'series-one',
+      },
+      options: {
+        chart: {
+          type: 'area',
+          stacked: false,
+          height: 350,
+          zoom: {
+            enabled: false
+          },
+          toolbar: {
+            show: false,
+          },
+        },
+        dataLabels: {
+          enabled: false
+        },
+        series: [{
+          name: 'CHMI - '+sensor.type,
+          data: []
+        }],
+        markers: {
+          size: 0,
+          style: 'full',
+        },
+        grid: {
+          show: true,
+          borderColor: 'rgba(255,255,255,.5)',
+          strokeDashArray: 2,
+          position: 'back',
+          xaxis: {
+            lines: {
+              show: false
+            }
+          },   
+          yaxis: {
+            lines: {
+              show: true
+            }
+          },  
+          padding: {
+            top: 10,
+            right: 30,
+            bottom: 10,
+            left: 30
+          }  
+        },
+        stroke: {
+          show: true,
+          curve: 'smooth',
+          lineCap: 'butt',
+          colors: ['#FF3100'],
+        },
+        fill: {
+          colors: ['#FF3100'],
+          type: 'gradient',
+          gradient: {
+            shadeIntensity: 1,
+            inverseColors: false,
+            opacityFrom: 0.65,
+            opacityTo: 0.0,
+            stops: [10, 100, 100, 100]
+          },
+        },
+        yaxis: {
+          tickAmount: 1,
+          opposite: true,
+          labels: {
+            style: {
+              color: 'rgba(255,255,255,.5)',
+              fontSize: '24px',
+              fontFamily: 'ExoRegular',
+            },
+            offsetX: 0,
+            formatter: function(val) {
+              return val.toFixed(0);
+            }
+          },
+          // min: 0,
+          // max: 100,
+          axisBorder: {
+            show: false
+          },
+          axisTicks: {
+            show: false,
+          },
+        },
+        xaxis: {
+          type: 'datetime',
+          tickAmount: 6,
+          labels: {
+            rotate: 0,
+            rotateAlways: false,
+            formatter: function (val, timestamp) {
+              return moment(new Date(timestamp)).format("H")
+            },
+            style: {
+              colors: Array(10).fill().map(a=>'rgba(255,255,255,.5)'),
+              fontSize: '24px',
+              fontFamily: 'ExoRegular',
             },
             offsetY: 10,
           },

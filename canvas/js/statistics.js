@@ -54,7 +54,7 @@ class Statistics {
 
             var statisticTitle = document.createElement('h2')
             statisticTitle.style.position = 'absolute'
-            statisticTitle.style.top = '80px'
+            statisticTitle.style.top = '50px'
             statisticTitle.style.width = '100%'
             statisticTitle.innerHTML = s.options.title
             a[i].element.appendChild(statisticTitle)
@@ -106,29 +106,39 @@ class Statistics {
         })
     }
 
-    fadeIn(specify = '', speed = '') {
+    fadeIn(specify = '', speed = '', delay = 0, delayBetween = 0) {
+        var hitIndex = 0
         this.statistics.forEach((e,i,a) => {
-            if (specify == '' ? true : e.id == specify)
-                if (a[i].element.className.indexOf('fadeIn')<0)
-                    a[i].element.className = 'animated fadeIn ' + speed
+            if (specify == '' ? true : e.id == specify) {
+                setTimeout(function(){
+                    if (a[i].element.className.indexOf('fadeIn')<0) {
+                        a[i].element.className = 'animated fadeIn ' + speed
+                    }
+                },delay+delayBetween*hitIndex)
+                hitIndex++
+            }
         })
+        return hitIndex
     }
 
     //UPDATE SPECIFIC
-    update(id,data) {
+    update(id,data, delay = 0) {
         this.statistics.filter(e=>e.id == id).forEach((e,i,a) => {
-            switch (e.data.type) {
-                case 'number':
-                    a[i].countup.update(data)
-                    break;
-                case 'text':
-                    a[i].baffle.start()
-                    a[i].baffle.text(currentText=>data)
-                    a[i].baffle.reveal(500)
-                    break;
-                default:
-                    break;
-            }
+            setTimeout(function(){
+                switch (e.data.type) {
+                    case 'number':
+                        a[i].countup.update(data)
+                        break;
+                    case 'text':
+                        a[i].baffle.start()
+                        a[i].baffle.text(currentText=>data)
+                        a[i].baffle.reveal(500)
+                        break;
+                    default:
+                        break;
+                }
+            },delay)
         })
+
     }
 }

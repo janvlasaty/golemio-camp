@@ -1,5 +1,3 @@
-console.log('start')
-  
 var storage = {};
 var N = 5
 

@@ -100,4 +100,34 @@ class Maps {
                     a[i].wrapper.className = 'map-wrapper animated fadeIn ' + speed
         })
     }
+
+    setBearing(id,stopBearing=0,duration=3000,easingFn='easeInOutQuad') {
+        this.maps.forEach((e,i,a) => {
+            if (id == '' ? true : e.id == id) {
+                var startBearing = (e.element.getBearing()%360+360)%360
+                stopBearing = (stopBearing%360+360)%360
+                var difference = Math.abs(stopBearing - startBearing)
+
+                var throughZero = difference > 180
+                var clockwise = startBearing < stopBearing
+                if (throughZero) clockwise = !clockwise
+
+                if (throughZero) difference = 360-difference
+                
+                Array(Math.round(duration/20)).fill().forEach((t,i,a)=>{
+                    var progress = i/a.length
+                    setTimeout(function(){
+                        e.element.setBearing(
+                            startBearing+
+                            Defaults.easingFunctions[easingFn](progress)
+                                *difference*((clockwise?1:-1))
+                        )
+                    },progress*duration)
+                })
+                setTimeout(function(){
+                    e.element.setBearing(stopBearing)
+                },duration)
+            }
+        })
+    }
 }

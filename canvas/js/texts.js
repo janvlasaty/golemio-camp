@@ -30,6 +30,9 @@ class Texts {
                     break;
                 case 'header2': 
                     var header = document.createElement('h2')
+                    header.innerHTML = e.data.header
+                    if (e.data.align) 
+                        header.style['text-align'] = e.data.align
                     a[i].element.appendChild(header)
                     break;
                 default:
@@ -57,12 +60,19 @@ class Texts {
         })
     }
 
-    fadeIn(specify = '', speed = '') {
+    fadeIn(specify = '', speed = '', delay = 0, delayBetween = 0) {
+        var hitIndex = 0
         this.texts.forEach((e,i,a) => {
             if (specify == '' ? true : e.id == specify)
-                if (a[i].element.className.indexOf('fadeIn')<0)
-                    a[i].element.className = 'animated fadeIn ' + speed
+                if (a[i].element.className.indexOf('fadeIn')<0) {
+                    setTimeout(function(){
+                        a[i].element.className = 'animated fadeIn ' + speed
+                    },delay+hitIndex*delayBetween)
+                    hitIndex++
+                }
+
         })
+        return hitIndex
     }
 
     //UPDATE SPECIFIC

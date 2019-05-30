@@ -16,7 +16,7 @@ SharingTexts.add({
 SharingTexts.add({
     id: 'bikesharingInfo',
     position: {
-        x: 5600,
+        x: 6350,
         y: 20,
     },
     width: 500,
