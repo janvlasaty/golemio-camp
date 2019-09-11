@@ -17,11 +17,11 @@ WasteStatistics.addStatistic(
         frame: 'actualStation',
         classList: ['text-green-grad'],
         position: {
-            x: 0,
+            x: -100,
             y: 150,
         },
         size: {
-            width: 500
+            width: 700
         },
         data: {
             type: 'text',

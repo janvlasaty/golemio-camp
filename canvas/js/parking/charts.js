@@ -5,7 +5,8 @@ ParkingCharts.addChart({
   id: 'parkingCapacityRatio',
   className: 'transparent',
   position: {
-    x: 5920,
+    x: 5920, //CAMP
+    // x: 6070,
     y: 430,
   },
   size: {
@@ -97,8 +98,10 @@ ParkingCharts.addChart({
   id: 'parkingOccupancyPast48h',
   className: 'transparent',
   position: {
-    x: 5450,
-    y: 50,
+    x: 5450,  // CAMP
+    // x: 5600,
+    y: 50,  // CAMP
+    // y: 80,
   },
   size: {
     width: 800
@@ -242,8 +245,10 @@ Object.keys(Defaults.dayNames).forEach(
     id: 'parkingAverageOccupancyBar-' + d,
     className: 'transparent',
     position: {
-      x: 6400,
-      y: 65 + d * 150,
+      x: 6400, // CAMP
+      // x: 6550,
+      y: 65 + d * 150, // CAMP
+      // y: 95 + d * 145,
     },
     size: {
       width: 600

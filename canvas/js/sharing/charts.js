@@ -24,11 +24,11 @@ SharingCharts.addChart({
     plotOptions: {
       pie: {
         size: 100,
-        offsetY: 30,
-        offsetX: -80,
+        offsetY: 0,
+        offsetX: 0,
         dataLabels: {
           offset: 40,
-          minAngleToShowLabel: 4,
+          minAngleToShowLabel: 5,
         },
       },
     },
@@ -447,7 +447,7 @@ SharingCharts.addChart({
       }
     },
     title: {
-      text: 'Providers share',
+      text: 'Providers actual share',
       align: 'left',
       offsetX: 0,
       offsetY: 10,

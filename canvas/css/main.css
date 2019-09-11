@@ -16,7 +16,7 @@
 }
 body {
     font-family: 'ExoBold';
-    background: grey;
+    background: black;
     color: white;
     margin: 0;
     padding: 0;
@@ -29,11 +29,18 @@ body::-webkit-scrollbar {
 }
 
 #canvas {
-    width: 7200px;
-    height: 1200px;
+    width: 7161px;
+    height: 1184px;
     position: absolute;
-    top: 0px;
+
+    /* CAMP */
+    top: 60px;
     left: 0px;
+
+    /* 4x FULL HD
+    top: -60px;
+    left: 240px; */
+
     background: black;
     overflow: hidden;
 }
@@ -66,8 +73,12 @@ HEADING
   ====== */
 #praguelive {
     position: absolute;
-    left: 200px;
-    top: 200px;
+    /* CAMP */
+    left: 0px;
+    /* 4x FULL HD
+    left: 100px; */
+
+    top: 100px;
     width: 1000px;
     height: 100%;
     z-index: 11;
@@ -104,12 +115,48 @@ HEADING
 }
 
 
+/* NO AMITAION */
 
-/* // NO AMITAION */
-/* #categories svg path {
+/* #heart {
     animation-name: unset;
-} */
+} 
+#categories svg path {
+    animation-name: unset;
+}  */
 
+
+/* INTRO */
+
+#logo-oict {
+    height: 200px;
+    position: absolute;
+    left: 1800px;
+    top: 800px;
+}
+#logo-golemio {
+    height: 400px;
+    position: absolute;
+    left: 2050px;
+    top: 200px;
+}
+#logo-smartprague {
+    height: 200px;
+    position: absolute;
+    left: 2570px;
+    top: 800px;
+}
+#logo-prague {
+    height: 200px;
+    position: absolute;
+    left: 3200px;
+    top: 800px;
+}
+#schema-dpsimple {
+    height: 1000px;
+    position: absolute;
+    left: 4200px;
+    top: 100px;
+}
 
 /* CONTAINERS */
 
@@ -159,7 +206,7 @@ CATEGORIES
     top: 80px;
 }
 #category-waste.position-highlighted { 
-    transform: translate3d(4700px,0,0); 
+    transform: translate3d(4750px,0,0); 
 }
 #category-parking {
     position: absolute;
@@ -495,17 +542,26 @@ DEV BUTTONS
     left: 500px;
 }
 #buttons button:nth-child(2) {
-    left: 1500px;
+    left: 1000px;
 }
 #buttons button:nth-child(3) {
-    left: 2500px;
+    left: 1500px;
 }
 #buttons button:nth-child(4) {
-    left: 3500px;
+    left: 2000px;
 }
 #buttons button:nth-child(5) {
-    left: 4500px;
+    left: 2500px;
 }
 #buttons button:nth-child(6) {
-    left: 5500px;
+    left: 3000px;
+}
+#buttons button:nth-child(7) {
+    left: 3500px;
+}
+#buttons button:nth-child(8) {
+    left: 4000px;
+}
+#buttons button:nth-child(9) {
+    left: 4500px;
 }

@@ -145,7 +145,8 @@ wastes.forEach((w,i) => {
     id: 'waste-'+w.type,
     className: 'transparent',
     position: {
-      x: 3550+i%2*600,
+      x: 3550+i%2*600, // CAMP
+      // x: 3600+i%2*600,
       y: 100+i%3*350,
     },
     size: {

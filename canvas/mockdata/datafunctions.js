@@ -21,13 +21,12 @@ mockdata.getIcegatewaysensor = function (id) {
 }
 
 mockdata.getIcegatewaysensorHistory = function (id, sensor) {
-    return this.icegatewaysensorsHistory.filter(s => s.id == id &&
-        s.sensors.filter(c => c.sensor_type == sensor)[0] != undefined
+    return this.icegatewaysensorsHistory.filter(s => 
+        (s.id == id && s.sensor_type == sensor)
     ).map(s => {
-        var data = s.sensors.filter(c => c.sensor_type == sensor)[0]
         return {
-            x: parseInt(data.created_at),
-            y: parseFloat(data.avg),
+            x: parseInt(s.created_at),
+            y: parseFloat(s.avg),
         }
     })
 }

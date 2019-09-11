@@ -7,31 +7,45 @@ document.addEventListener("DOMContentLoaded", function(event) {
         // Screenplay.play('parking')
 
         document.querySelector('#loader').className='animated fadeOut slower'
-        setTimeout(function() {
-            document.querySelector('#loader').className='hidden'
+
+        if (true) {
+            setTimeout(function() {
+                document.querySelector('#loader').className='hidden'
 
 
-            Shapes.showAll()
+                Shapes.showAll()
 
-        },5000)
-        setTimeout(function() {
+            },5000)
+            setTimeout(function() {
 
-            Audio.replay('citynoise')
-            Audio.setGain('citynoise',.15)
-            setInterval(function(){
                 Audio.replay('citynoise')
                 Audio.setGain('citynoise',.15)
-            },3*60*1000)
-            Audio.replay('intro')
+                setInterval(function(){
+                    Audio.replay('citynoise')
+                    Audio.setGain('citynoise',.15)
+                },3*60*1000)
 
-        },20000)
+            },20000)
+        }
     },3000)
 })
 
 var Loop = {
     active: false,
-    scenarios: ['parking','airquality','waste','transport','sharing'],
+    scenarios: [
+        //'general',
+        'parking','airquality','waste','transport','sharing'
+    ],
     index: 0,
+}
+Loop.stop = function() {
+    this.active = false
+    this.index = 0 
+}
+Loop.replay = function() {
+    this.stop()
+    this.active = true
+    this.play()
 }
 Loop.play = function() {
     if (Loop.active) {
@@ -43,6 +57,11 @@ Loop.play = function() {
         this.index++
         if (this.index==this.scenarios.length) this.index = 0
     } else { this.index = 0 }
+}
+Loop.replay = function() {
+    this.stop()
+    this.active = true
+    this.play()
 }
 
 document.onkeyup = function (event) {
@@ -60,6 +79,9 @@ document.onkeyup = function (event) {
     }
     if (event.which == 67 || event.keyCode == 67) {
          Screenplay.play('airquality')
+    }
+    if (event.which == 71 || event.keyCode == 71) {
+         Screenplay.play('general')
     }
     if (event.which == 82 || event.keyCode == 82) {
          Screenplay.kindReload()

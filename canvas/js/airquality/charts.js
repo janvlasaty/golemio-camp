@@ -7,7 +7,8 @@ AirqualityCharts.addChart({
   className: 'transparent',
   position: {
     x: 900,
-    y: 830,
+    // y: 800,
+    y: 820, //  CAMP
   },
   size: {
     width: 500
@@ -118,7 +119,8 @@ sensors.forEach((sensor,i)=>{
       className: 'transparent',
       position: {
         x: 1550+i*620,
-        y: 50,
+        y: 50, // CAMP
+        // y: 80,
       },
       size: {
         width: 600
@@ -279,7 +281,8 @@ sensorsKarlin.forEach((sensor,i)=>{
       className: 'transparent',
       position: {
         x: 4650+i*900,
-        y: 50,
+        y: 50, // CAMP
+        // y: 80, 
       },
       size: {
         width: 850

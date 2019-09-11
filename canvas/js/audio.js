@@ -18,7 +18,7 @@ var audios = [
         path: './audio/paulie_short.mp3',
     },
     {
-        id: 'intro',
+        id: 'general',
         path: './audio/intro.mp3',
     },
     {

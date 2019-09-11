@@ -2,6 +2,34 @@ var Screenplay = {
     playing: false,
     playingScenario: '',
     scenarios: {
+        general: {
+            keyframes: [
+                {
+                    duration: 10,
+                    action: function() {
+                        document.querySelector('#logo-prague').className = 'animated fadeIn slower delay-4s'
+                        document.querySelector('#logo-smartprague').className = 'animated fadeIn slower delay-3s'
+                        document.querySelector('#logo-golemio').className = 'animated fadeIn slower'
+                        document.querySelector('#logo-oict').className = 'animated fadeIn slower delay-2s'
+                    },
+                },
+                {
+                    duration: 30,
+                    action: function() {
+                        GeneralTexts.fadeIn('generalInfo')
+                        document.querySelector('#schema-dpsimple').className = 'animated fadeIn slower delay-5s'
+                    },
+                },
+            ],
+            end: function() {
+                GeneralTexts.hide()
+                document.querySelector('#schema-dpsimple').className = 'animated fadeOut'
+                document.querySelector('#logo-prague').className = 'animated fadeOut'
+                document.querySelector('#logo-smartprague').className = 'animated fadeOut'
+                document.querySelector('#logo-golemio').className = 'animated fadeOut'
+                document.querySelector('#logo-oict').className = 'animated fadeOut'
+            } 
+        },
         parking: {
             keyframes: [
                 {
@@ -211,7 +239,10 @@ var Screenplay = {
                             )
                         
                         AirqualityMaps.fadeIn('CHMI','slower')
-                        Message.update('There are '+mockdata.airqualitystations.features.length+' stations around Prague','1500px',5000,'slow')
+                        Message.update('There are '+mockdata.airqualitystations.features.length+' stations around Prague',
+                            // '1500px', CAMP
+                            '1600px',
+                            5000,'slow')
                     }
                 },
                 {
@@ -261,13 +292,19 @@ var Screenplay = {
                 {
                     duration: 10,
                     action: function() {
-                        Message.update('We monitor each station every 1 hour','1500px',5000,'slow')
+                        Message.update('We monitor each station every 1 hour',
+                            // '1500px', CAMP
+                            '1600px',
+                            5000,'slow')
                     }
                 },
                 {
                     duration: 3,
                     action: function() {
-                        Message.update('Let\'s have a look to another one...','1500px',5000,'slow')
+                        Message.update('Let\'s have a look to another one...',
+                            // '1500px', CAMP
+                            '1600px',
+                            5000,'slow')
                     }
                 },
                 {
