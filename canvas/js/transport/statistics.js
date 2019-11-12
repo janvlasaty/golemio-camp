@@ -4,8 +4,8 @@ TransportStatistics.addFrame(
     {
         id: 'statisticCounts',
         position: {
-            x: 5950,
-            y: 400,
+            x: 3100,
+            y: 1500,
         }
     }
 )
@@ -28,7 +28,7 @@ TransportStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'MONITORED TRIPS'
+            title: 'SLEDOVANÁ VOZIDLA'
         },
     }
 )
@@ -52,7 +52,7 @@ TransportStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 1,
-            title: 'AVERAGE DELAY [min]'
+            title: 'PRŮMĚRNÉ ZPOŽDĚNÍ [min]'
         },
     }
 )
@@ -62,8 +62,8 @@ TransportStatistics.addFrame(
     {
         id: 'statisticOne',
         position: {
-            x: 950,
-            y: 400,
+            x: 1050,
+            y: 1500,
         }
     }
 )
@@ -85,7 +85,7 @@ TransportStatistics.addStatistic(
         },
         options: {
             text: '',
-            title: 'TRIP NUMBER'
+            title: 'ČÍSLO LINKY'
         },
     }
 )
@@ -109,7 +109,7 @@ TransportStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 1,
-            title: 'ACTUAL DELAY [min]'
+            title: 'AKTUÁLNÍ ZPOŽDĚNÍ [min]'
         },
     }
 )

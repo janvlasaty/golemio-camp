@@ -1,21 +1,20 @@
 var WasteMaps = new Maps('waste')
 
-
 WasteMaps.add({
     id: 'waste',
     options: {
         position: {
-            top: '0px',
-            left: '1200px',
+            top: '900px',
+            left: '800px',
         },
         size: {
-            height: '1200px',
+            height: '1300px',
             width: '2450px',
         },
         initialization: {
             center: [14.424, 50.082],
             zoom: 12.5,
-            pitch: 30,
+            pitch: 00,
             style: 'mapbox://styles/janvlasaty/cjutqb4e519hv1fo1ipiwbwmm',
         },
         onload: function(map,assets) {
@@ -50,8 +49,8 @@ WasteMaps.add({
                 "source": "waste-points",
                 "paint": {
                     "circle-color": "rgba(100,239,209,1)",
-                    "circle-radius": 8,
-                    "circle-opacity": 1,
+                    "circle-radius": 3,
+                    "circle-opacity": .75,
                     "circle-stroke-width": 2,
                     "circle-stroke-color": "white",
                     "circle-stroke-opacity": 1,

@@ -4,8 +4,8 @@ AirqualityStatistics.addFrame(
     {
         id: 'CHMI',
         position: {
-            x: 800,
-            y: 680,
+            x: 1950,
+            y: 300,
         }
     }
 )
@@ -37,8 +37,8 @@ AirqualityStatistics.addStatistic(
             type: 'text',
         },
         options: {
-            text: '--address--',
-            title: 'ADDRESS'
+            text: 'PRAHA',
+            title: 'ADRESA'
         },
     }
 )
@@ -63,7 +63,7 @@ AirqualityStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'SENSOR COUNT'
+            title: 'POČET SENSORŮ'
         },
     }
 )

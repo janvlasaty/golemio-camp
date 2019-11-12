@@ -4,8 +4,8 @@ SharingStatistics.addFrame(
     {
         id: 'numbers',
         position: {
-            x: 850,
-            y: 800,
+            x: 1700,
+            y: 400,
         }
     }
 )
@@ -29,7 +29,7 @@ SharingStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'AVAILABLE CARS'
+            title: 'AUT K DISPOZICI'
         },
     }
 )
@@ -38,8 +38,8 @@ SharingStatistics.addFrame(
     {
         id: 'bikenumbers',
         position: {
-            x: 6650,
-            y: 880,
+            x: 1700,
+            y: 800,
         }
     }
 )
@@ -63,7 +63,7 @@ SharingStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'AVAILABLE BIKES'
+            title: 'KOL K DISPOZICI'
         },
     }
 )

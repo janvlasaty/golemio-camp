@@ -5,11 +5,11 @@ SharingCharts.addChart({
   id: 'providers',
   className: 'transparent',
   position: {
-    x: 3000,
-    y: 400,
+    x: 1100,
+    y: 1200,
   },
   size: {
-    width: 600,
+    width: 700,
     height: 250,
   },
   data: {
@@ -17,7 +17,7 @@ SharingCharts.addChart({
   },
   options: {
     chart: {
-        width: 600,
+        width: 550,
         height: 400,
         type: 'pie',
     },
@@ -58,7 +58,7 @@ SharingCharts.addChart({
       width: undefined,
       height: undefined,
       formatter: undefined,
-      offsetX: 10,
+      offsetX: -30,
       offsetY: 150,
       labels: {
         colors: ['#FFF'],
@@ -73,7 +73,7 @@ SharingCharts.addChart({
       }
     },
     title: {
-      text: 'Providers share',
+      text: 'Podíl poskytovatelů',
       align: 'left',
       offsetX: 0,
       offsetY: 10,
@@ -92,8 +92,8 @@ SharingCharts.addChart({
   id: 'fuelTypes',
   className: 'transparent',
   position: {
-    x: 3000,
-    y: 800,
+    x: 800,
+    y: 1650,
   },
   size: {
     width: 600,
@@ -212,7 +212,7 @@ SharingCharts.addChart({
       }
     },
     title: {
-      text: 'Car fuel types',
+      text: 'Typ energie pohonu',
       align: 'left',
       offsetX: 0,
       offsetY: 10,
@@ -234,8 +234,8 @@ SharingCharts.addChart({
   id: 'vehicleTypes',
   className: 'transparent',
   position: {
-    x: 3000,
-    y: 50,
+    x: 1500,
+    y: 1650,
   },
   size: {
     width: 600,
@@ -356,7 +356,7 @@ SharingCharts.addChart({
       }
     },
     title: {
-      text: 'Available car types',
+      text: 'Značky aut',
       align: 'left',
       offsetX: 0,
       offsetY: 10,
@@ -379,8 +379,8 @@ SharingCharts.addChart({
   id: 'bikeProviders',
   className: 'transparent',
   position: {
-    x: 6350,
-    y: 700,
+    x: 3250,
+    y: 1450,
   },
   size: {
     width: 400,
@@ -447,7 +447,7 @@ SharingCharts.addChart({
       }
     },
     title: {
-      text: 'Providers actual share',
+      text: 'Poskytovatelé kol',
       align: 'left',
       offsetX: 0,
       offsetY: 10,

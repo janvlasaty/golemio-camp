@@ -16,7 +16,7 @@
 }
 body {
     font-family: 'ExoBold';
-    background: black;
+    background: rgb(150, 150, 150);
     color: white;
     margin: 0;
     padding: 0;
@@ -37,13 +37,20 @@ body::-webkit-scrollbar {
     top: 60px;
     left: 0px;
 
-    /* 4x FULL HD
-    top: -60px;
-    left: 240px; */
-
     background: black;
     overflow: hidden;
 }
+body.view_4fullhd #canvas {
+    top: -60px;
+    left: 240px;
+}
+body.view_4k #canvas {
+    top: 0px;
+    left: 0px;
+    width: 3840px;
+    height: 2160px;
+}
+
 .hidden {
     display: none;
 }
@@ -65,7 +72,7 @@ body::-webkit-scrollbar {
     display: block;
     position: absolute;
     width: 100%;
-    top: 580px;
+    top: 50%;
 }
 
 /* ======
@@ -82,6 +89,23 @@ HEADING
     width: 1000px;
     height: 100%;
     z-index: 11;
+}
+body.view_4k #praguelive {
+    left: 1450px;
+    top: 770px;
+    text-align: center;
+    font-size: 120%;
+}
+body.view_4k #praguelive h1 {
+    font-size: 200px;
+    line-height: 200px;
+}
+body.view_4k #praguelive #heart {
+    width: 150px;
+    margin-left: 0px;
+}
+body.view_4k #praguelive span {
+    display: none;
 }
 
 #praguelive h1 {
@@ -117,45 +141,67 @@ HEADING
 
 /* NO AMITAION */
 
-/* #heart {
+body.no-fluid-effect #categories svg path, body.no-fluid-effect #heart {
     animation-name: unset;
 } 
-#categories svg path {
-    animation-name: unset;
-}  */
-
 
 /* INTRO */
 
-#logo-oict {
+#container-general .logo-oict {
     height: 200px;
     position: absolute;
     left: 1800px;
     top: 800px;
 }
-#logo-golemio {
+#container-general .logo-golemio {
     height: 400px;
     position: absolute;
     left: 2050px;
     top: 200px;
 }
-#logo-smartprague {
+#container-general .logo-smartprague {
     height: 200px;
     position: absolute;
     left: 2570px;
     top: 800px;
 }
-#logo-prague {
+#container-general .logo-prague {
     height: 200px;
     position: absolute;
     left: 3200px;
     top: 800px;
 }
-#schema-dpsimple {
+#container-general .schema-dpsimple {
     height: 1000px;
     position: absolute;
     left: 4200px;
     top: 100px;
+}
+
+
+#cornerLogos .logo-oict {
+    height: 100px;
+    position: absolute;
+    left: 220px;
+    top: 1750px;
+}
+#cornerLogos .logo-golemio {
+    height: 120px;
+    position: absolute;
+    left: 200px;
+    top: 1500px;
+}
+#cornerLogos .logo-smartprague {
+    height: 140px;
+    position: absolute;
+    left: 3450px;
+    top: 1730px;
+}
+#cornerLogos .logo-prague {
+    height: 130px;
+    position: absolute;
+    left: 3440px;
+    top: 1500px;
 }
 
 /* CONTAINERS */
@@ -196,6 +242,16 @@ CATEGORIES
 #categories > div {
     transition-duration: 3s;
 }
+body.view_4k #categories > div {
+    font-size: 80%;
+}
+body.view_4k #categories > div h1 {
+    top: 220px;
+    left: 180px;
+}
+body.view_4k #categories > div h3 {
+    display: none;
+}
 
 #category-waste {
     position: absolute;
@@ -208,6 +264,10 @@ CATEGORIES
 #category-waste.position-highlighted { 
     transform: translate3d(4750px,0,0); 
 }
+body.view_4k #category-waste {
+    width: 950px;
+    transform: translate3d(1450px,-100px,0)
+}
 #category-parking {
     position: absolute;
     height: 100%;
@@ -218,6 +278,10 @@ CATEGORIES
 }
 #category-parking.position-highlighted { 
     transform: translate3d(1200px,0,0); 
+}
+body.view_4k #category-parking {
+    transform: translate3d(850px,1150px,0);
+    width: 900px;
 }
 
 #category-transport {
@@ -231,7 +295,10 @@ CATEGORIES
 #category-transport.position-highlighted { 
     transform: translate3d(3000px,0,0); 
 }
-
+body.view_4k #category-transport {
+    width: 800px;
+    transform: translate3d(400px,200px,0);
+}
 
 #category-sharing {
     position: absolute;
@@ -244,7 +311,10 @@ CATEGORIES
 #category-sharing.position-highlighted { 
     transform: translate3d(3600px,0,0); 
 }
-
+body.view_4k #category-sharing {
+    width: 800px;
+    transform: translate3d(2200px,1150px,0); 
+}
 
 #category-airquality {
     position: absolute;
@@ -256,6 +326,10 @@ CATEGORIES
 }
 #category-airquality.position-highlighted { 
     transform: translate3d(3400px,0,0); 
+}
+body.view_4k #category-airquality {
+    width: 800px;    
+    transform: translate3d(2550px,200px,0); 
 }
 
 
@@ -426,8 +500,6 @@ CATEGORIES
 }
 
 
-
-
 /* SHARING */
 .layer-airquality {
     overflow: visible;
@@ -467,12 +539,6 @@ CATEGORIES
         d: path('M959.61,571.29C924.47,625.76,952,705,863.94,736.66S678.8,666.56,599.53,642.1s-217.06,27.51-217.06,27.51S254.63,705,146.74,652.8C64.78,613.18-5.62,523,.35,328.31c.07-1.49.07-2.9.21-4.3C9.56,88.29,152.65,17.1,285.46,2.32,395.1-9.95,503.59,27.1,596.44,96c138.65,102.78,221.29,43.14,221.29,43.14s248.09-98.31,322.93,103.17S994.68,516.89,959.61,571.29Z');
     }
 }
-
-
-
-
-
-
 
 
 
@@ -531,7 +597,10 @@ DEV BUTTONS
 #buttons {
     position: absolute;
     top: 1400px;
-    left: 0px;
+    left: 50px;
+}
+body.view_4k #buttons {
+    top: 2200px;
 }
 #buttons button {
     position: absolute;
@@ -539,29 +608,29 @@ DEV BUTTONS
     font-size: 50px;
 }
 #buttons button:nth-child(1) {
-    left: 500px;
+    left: 0px;
 }
 #buttons button:nth-child(2) {
-    left: 1000px;
+    left: 500px;
 }
 #buttons button:nth-child(3) {
-    left: 1500px;
+    left: 1000px;
 }
 #buttons button:nth-child(4) {
-    left: 2000px;
+    left: 1500px;
 }
 #buttons button:nth-child(5) {
-    left: 2500px;
+    left: 2000px;
 }
 #buttons button:nth-child(6) {
-    left: 3000px;
+    left: 2500px;
 }
 #buttons button:nth-child(7) {
-    left: 3500px;
+    left: 3000px;
 }
 #buttons button:nth-child(8) {
-    left: 4000px;
+    left: 3500px;
 }
 #buttons button:nth-child(9) {
-    left: 4500px;
+    left: 4000px;
 }

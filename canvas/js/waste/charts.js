@@ -6,8 +6,8 @@ WasteCharts.addChart({
   id: 'actualFullness',
   className: 'transparent',
   position: {
-    x: 850,
-    y: 700,
+    x: 3150,
+    y: 1450,
   },
   size: {
     width: 500
@@ -22,7 +22,7 @@ WasteCharts.addChart({
       type: 'radialBar',
     },
     series: [ 80, 20, 30, 64, 29, 42 ],
-    labels: ['FULNESS'],
+    labels: ['ZAPLNĚNOST'],
     tooltip: {
       enabled: false,
     },
@@ -94,7 +94,7 @@ WasteCharts.addChart({
       }
     },
     title: {
-      text: 'ACTUAL FULNESS',
+      text: 'AKTUÁLNÍ ZAPLNĚNOST',
       align: 'center',
       offsetX: 0,
       offsetY: 300,
@@ -111,32 +111,32 @@ var wastes = [
   {
     type: 'plastic',
     color: '#efef64',
-    title: 'PLASTIC',
+    title: 'PLASTY',
   },
   {
     type: 'paper',
     color: '#55b4fc',
-    title: 'PAPER',
+    title: 'PAPÍR',
   },
   {
     type: 'otherglass',
     color: '#64efd1',
-    title: 'OTHER GLASS',
+    title: 'BAREVNÉ SKLO',
   },
   {
     type: 'beveragecartons',
     color: '#fcae55',
-    title: 'CARTONS',
+    title: 'NÁP. KARTONY',
   },
   {
     type: 'whiteglass',
     color: '#ffffff',
-    title: 'WHITE GLASS',
+    title: 'BÍLÉ SKLO',
   },
   {
     type: 'metal',
     color: '#aaaaaa',
-    title: 'METAL',
+    title: 'KOVY',
   },
 ]
 wastes.forEach((w,i) => {
@@ -145,9 +145,9 @@ wastes.forEach((w,i) => {
     id: 'waste-'+w.type,
     className: 'transparent',
     position: {
-      x: 3550+i%2*600, // CAMP
+      x: 2500+i%2*600, // CAMP
       // x: 3600+i%2*600,
-      y: 100+i%3*350,
+      y: 90+i%3*340,
     },
     size: {
       width: 600,
@@ -295,8 +295,8 @@ WasteCharts.addChart({
   id: 'picksRatioUnder50',
   className: 'transparent',
   position: {
-    x: 6550,
-    y: 650,
+    x: 800,
+    y: 150,
   },
   size: {
     width: 500

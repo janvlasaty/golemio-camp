@@ -4,7 +4,7 @@ TEXT  PARKING
   ====== */
 #text-prparking-right {
     position: absolute;
-    left: 5300px;
+    left: 3300px;
 }
 #text-prparking-right * {
     width: 550px;
@@ -19,7 +19,7 @@ TEXT  PARKING
 }
 #text-prparking-averageoccupancytitle {
     position: absolute;
-    left: 1110px;
+    left: 110px;
     top: 20px;
     width: 400px;
 }

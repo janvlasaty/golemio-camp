@@ -4,9 +4,10 @@ ParkingStatistics.addFrame(
     {
         id: 'detail',
         position: {
-            x: 5300, //CAMP
+            // x: 5300, //CAMP
             // x: 5450,
-            y: 960,
+            x: 1970,
+            y: 1860,
         }
     }
 )
@@ -15,7 +16,8 @@ ParkingStatistics.addFrame(
     {
         id: 'overall',
         position: {
-            x: 2350,
+            // x: 2350,
+            x: 150,
             y: 350,
         }
     }
@@ -41,7 +43,7 @@ ParkingStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'PARKING CAPACITY',
+            title: 'KAPACITA PARKOVIŠTĚ',
         },
     }
 )
@@ -65,7 +67,7 @@ ParkingStatistics.addStatistic(
         },
         options: {
             text: 'Parking',
-            title: 'PARKING NAME'
+            title: 'NÁZEV PARKOVIŠTĚ'
         },
     }
 )
@@ -90,7 +92,7 @@ ParkingStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'PARKING COUNT'
+            title: 'POČET PARKOVIŠŤ'
         },
     }
 )
@@ -116,7 +118,7 @@ ParkingStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'PARKING SPACES'
+            title: 'POČET STÁNÍ'
         },
     }
 )
@@ -142,7 +144,7 @@ ParkingStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'PARKING NAME'
+            title: 'NÁZEV PARKOVIŠTĚ'
         },
     }
 )

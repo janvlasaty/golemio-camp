@@ -66,8 +66,10 @@ class Statistics {
 
             switch (s.data.type) {
                 case 'number': 
-                    a[i].countup = new CountUp(statisticElement.id, 10, { decimalPlaces: s.options.decimalPlaces });
-                    a[i].countup.update(s.options.value)
+                    a[i].countup = new CountUp(statisticElement.id, 0, { decimalPlaces: s.options.decimalPlaces, duration: 2 });
+                    if (!a[i].countup.error) { 
+                        a[i].countup.start();
+                    }
                     break;
                 case 'text': 
                     a[i].baffle = baffle(statisticElement,{

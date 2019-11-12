@@ -6,7 +6,7 @@ SharingMaps.add({
     options: {
         position: {
             top: '0px',
-            left: '1300px',
+            left: '0px',
         },
         size: {
             height: '1200px',
@@ -14,8 +14,8 @@ SharingMaps.add({
         },
         initialization: {
             center: [14.424, 50.05],
-            zoom: 13,
-            pitch: 60,
+            zoom: 12,
+            pitch: 0,
             bearing: 60,
             style: 'mapbox://styles/janvlasaty/cjutqb4e519hv1fo1ipiwbwmm',
         },
@@ -48,7 +48,7 @@ SharingMaps.add({
     options: {
         position: {
             top: '0px',
-            left: '4600px',
+            left: '2050px',
         },
         size: {
             height: '1200px',
@@ -56,8 +56,8 @@ SharingMaps.add({
         },
         initialization: {
             center: [14.424, 50.05],
-            zoom: 13,
-            pitch: 60,
+            zoom: 12,
+            pitch: 0,
             bearing:60,
             style: 'mapbox://styles/janvlasaty/cjutqb4e519hv1fo1ipiwbwmm',
         },

@@ -6,14 +6,14 @@ AirqualityMaps.add({
     options: {
         position: {
             top: '300px',
-            left: '1400px',
+            left: '0px',
         },
         size: {
             height: '900px',
             width: '2200px',
         },
         initialization: {
-            center: [14.424, 50.05],
+            center: [14.424, 50.08],
             zoom: 11,
             pitch: 0,
             style: 'mapbox://styles/janvlasaty/cjutqb4e519hv1fo1ipiwbwmm',
@@ -112,8 +112,8 @@ AirqualityMaps.add({
     id: 'Karlin',
     options: {
         position: {
-            top: '300px',
-            left: '4300px',
+            top: '1300px',
+            left: '1350px',
         },
         size: {
             height: '900px',

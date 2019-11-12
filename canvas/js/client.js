@@ -5,15 +5,23 @@ window.WebSocket = window.WebSocket || window.MozWebSocket;
 
 // var server = '10.180.0.105:1337';
 // var server = '10.0.0.11:1337'
-var server = 'campserver.francecentral.cloudapp.azure.com:8080';
+// var server = 'campserver.francecentral.cloudapp.azure.com:8080';
+// var server = 'golemiodemo.westeurope.cloudapp.azure.com/api/';
+// server = '26537db3.ngrok.io/'
+var server = 'rabin.golemio.cz/prague-live-server'
+// var server = '7e11fb1a.ngrok.io'
 var connection = {}
 function connect() {
 
-    connection = new WebSocket('ws://'+server+'?type=canvas');
+    connection = new WebSocket('wss://'+server+'?type=canvas');
 
     connection.onopen = function () {
         // connection is opened and ready to use
         console.log('Connected as canvas!');
+
+        Message.update(
+            'Připojeno ke Golemio API :-).', 
+            '1000px', 2000)
     };
 
     connection.onclose = function(e) {

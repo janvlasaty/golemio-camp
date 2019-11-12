@@ -1,3 +1,4 @@
+if (mockdata === undefined) var mockdata = {}
 //FUNCTIONS
 mockdata.getAirqualityStation = function (id) {
     return this.airqualitystations.features.filter(s => s.properties.id == id)[0]
@@ -177,7 +178,7 @@ mockdata.getWastestationsMeasurements = function (id, days = 7) {
         .filter(s => moment(s.measured_at_utc) > moment().subtract(days, 'days'))
         .map(s => {
             return {
-                x: moment(s.measured_at_utc).unix() * 1000,
+                x: moment(s.measured_at_utc).unix()*1000,
                 y: parseFloat(s.percent_calculated),
             }
         })
@@ -218,6 +219,10 @@ mockdata.getTransportPreparedTripStopsLinestring = function (id) {
 
 mockdata.getTransportPreparedTripShapeLinestring = function (id) {
     var trip = this.trips.filter(t => id == t.trip_id)[0]
+    // console.log(trip.shapes.map(t => {
+    //     return t.geometry.coordinates
+    // }))
+    // if (trip === undefined) trip = { shapes: [] }
     return turf.lineString(trip.shapes.map(t => {
         return t.geometry.coordinates
     }), {})

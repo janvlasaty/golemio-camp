@@ -4,7 +4,7 @@ WasteStatistics.addFrame(
     {
         id: 'actualStation',
         position: {
-            x: 850,
+            x: 200,
             y: 0,
         }
     }
@@ -28,7 +28,7 @@ WasteStatistics.addStatistic(
         },
         options: {
             text: 'ADDRESS',
-            title: 'ADDRESS'
+            title: 'ADRESA'
         },
     }
 )
@@ -52,7 +52,7 @@ WasteStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 1,
-            title: 'NEXT PICK IN DAYS'
+            title: 'PŘÍŠTÍ SVOZ [DNY]'
         },
     }
 )
@@ -76,7 +76,7 @@ WasteStatistics.addStatistic(
         },
         options: {
             text: 'some',
-            title: 'NEXT PICK WASTE TYPE'
+            title: 'PŘÍŠTÍ SVOZ [TYP]'
         },
     }
 )
@@ -110,7 +110,7 @@ WasteStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'ALL STATIONS'
+            title: 'STANOVIŠTĚ'
         },
     }
 )
@@ -133,7 +133,7 @@ WasteStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'SENSORED STATIONS'
+            title: 'MĚŘENÉ STANOVIŠTĚ'
         },
     }
 )
@@ -156,7 +156,7 @@ WasteStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'ALL CONTAINERS'
+            title: 'POČET KONTEJNERŮ'
         },
     }
 )
@@ -179,7 +179,7 @@ WasteStatistics.addStatistic(
         options: {
             value: 0,
             decimalPlaces: 0,
-            title: 'SENSORED CONTAINERS'
+            title: 'MĚŘENÉ KONTEJNERY'
         },
     }
 )

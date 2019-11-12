@@ -6,16 +6,16 @@ ParkingMaps.add({
     options: {
         position: {
             top: '0px',
-            left: '2400px',
+            left: '400px',
         },
         size: {
-            height: '1200px',
-            width: '3000px',
+            height: '1400px',
+            width: '2900px',
         },
         initialization: {
             center: [14.424, 50.082],
             zoom: 12.5,
-            pitch: 30,
+            pitch: 0,
             style: 'mapbox://styles/janvlasaty/cjutqb4e519hv1fo1ipiwbwmm',
         },
         onload: function(map,assets) {
@@ -27,14 +27,14 @@ ParkingMaps.add({
                 type: 'geojson',
                 data: {
                     "type": "FeatureCollection",
-                    "features": storage.features
+                    "features": []
                 }
             })
             map.addSource('parking-point',{
                 type: 'geojson',
                 data: {
                     "type": "FeatureCollection",
-                    "features": [storage.features[4]]
+                    "features": []
                 }
             })
             map.addLayer({

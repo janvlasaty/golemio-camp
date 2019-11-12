@@ -5,12 +5,11 @@ ParkingCharts.addChart({
   id: 'parkingCapacityRatio',
   className: 'transparent',
   position: {
-    x: 5920, //CAMP
-    // x: 6070,
-    y: 430,
+    x: 2250,
+    y: 1440,
   },
   size: {
-    width: 400
+    width: 450
   },
   data: {
     seriesType: 'number',
@@ -18,11 +17,11 @@ ParkingCharts.addChart({
   },
   options: {
     chart: {
-      height: 350,
+      height: 370,
       type: 'radialBar',
     },
     series: [50],
-    labels: ['ACTUAL OCCUPANCY'],
+    labels: ['AKTUÁLNÍ OBSAZENOST'],
     tooltip: {
       enabled: false,
     },
@@ -98,9 +97,9 @@ ParkingCharts.addChart({
   id: 'parkingOccupancyPast48h',
   className: 'transparent',
   position: {
-    x: 5450,  // CAMP
+    x: 3050,  // CAMP
     // x: 5600,
-    y: 50,  // CAMP
+    y: 100,  // CAMP
     // y: 80,
   },
   size: {
@@ -130,7 +129,7 @@ ParkingCharts.addChart({
       enabled: false
     },
     series: [{
-      name: 'Parking Occupancy',
+      name: 'Parkovací obsazenost',
       data: []
     }],
     markers: {
@@ -216,7 +215,7 @@ ParkingCharts.addChart({
       },
     },
     title: {
-      text: 'OCCUPANCY PAST 48H',
+      text: 'OBSAZENOST POSLEDNÍCH 48h',
       align: 'left',
       offsetX: 0,
       style: {
@@ -245,25 +244,25 @@ Object.keys(Defaults.dayNames).forEach(
     id: 'parkingAverageOccupancyBar-' + d,
     className: 'transparent',
     position: {
-      x: 6400, // CAMP
+      x: 3050, // CAMP
       // x: 6550,
-      y: 65 + d * 150, // CAMP
+      y: 580 + d * 200, // CAMP
       // y: 95 + d * 145,
     },
     size: {
-      width: 600
+      width: 750
     },
     chart: {},
     data: {
       seriesType: 'series-one-array',
-      seriesName: 'Average Occupancy',
+      seriesName: 'Průměrná obsazenost',
       source: 'dayHourOccupancy',
       arrayIndex: d,
     },
     //OPTIONS
     options: {
       chart: {
-        height: 190,
+        height: 220,
         type: 'bar',
         toolbar: {
           show: false,
@@ -285,8 +284,8 @@ Object.keys(Defaults.dayNames).forEach(
         colors: ['transparent']
       },
       series: [{
-        name: 'Average Occupancy',
-        data: storage.dayHourOccupancy[d],
+        name: 'Průměrná obsazenost',
+        data: Array(24).fill().map((a, i) => 0),
       }],
       grid: {
         show: true,

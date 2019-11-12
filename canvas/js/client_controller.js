@@ -5,7 +5,8 @@ window.WebSocket = window.WebSocket || window.MozWebSocket;
 
 // var server = '10.180.0.105:1337';
 // var server = 'localhost:1337';
-var server = 'campserver.francecentral.cloudapp.azure.com:8080';
+// var server = 'campserver.francecentral.cloudapp.azure.com:8080';
+var server = 'golemiodemo.westeurope.cloudapp.azure.com/api/';
 var connection = {}
 
 var url = new URL(window.location.href);

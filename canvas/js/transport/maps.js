@@ -5,11 +5,11 @@ TransportMaps.add({
     options: {
         position: {
             top: '0px',
-            left: '4100px',
+            left: '1300px',
         },
         size: {
-            height: '1200px',
-            width: '2100px',
+            height: '1100px',
+            width: '2400px',
         },
         initialization: {
             center: [14.424, 50.082],
@@ -115,12 +115,12 @@ TransportMaps.add({
     id: 'transport-one',
     options: {
         position: {
-            top: '0px',
-            left: '1200px',
+            top: '1200px',
+            left: '1300px',
         },
         size: {
-            height: '1200px',
-            width: '2000px',
+            height: '1100px',
+            width: '1800px',
         },
         initialization: {
             center: [14.39323,49.95835],
@@ -173,13 +173,13 @@ TransportMaps.add({
                     "circle-color": "#F9A35A",
                     "circle-radius": [
                         "interpolate", ["linear"], ["zoom"],
-                        10, 15,
-                        15, 10,
+                        5, 15,
+                        10, 10,
                     ],
                     "circle-stroke-width": [
                         "interpolate", ["linear"], ["zoom"],
-                        10, 5,
-                        15, 2,
+                        5, 5,
+                        10, 2,
                     ],
                     "circle-stroke-color": "black",
                 }

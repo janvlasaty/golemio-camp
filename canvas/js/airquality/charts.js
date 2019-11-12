@@ -6,9 +6,9 @@ AirqualityCharts.addChart({
   id: 'CHMIAirqualityIndex',
   className: 'transparent',
   position: {
-    x: 900,
+    x: 2050,
     // y: 800,
-    y: 820, //  CAMP
+    y: 520, //  CAMP
   },
   size: {
     width: 500
@@ -23,7 +23,7 @@ AirqualityCharts.addChart({
       type: 'radialBar',
     },
     series: [ 3*25 ],
-    labels: ['AIR QUALITY INDEX'],
+    labels: ['INDEX KVALITY OVZUDŠÍ'],
     tooltip: {
       enabled: false,
     },
@@ -98,17 +98,17 @@ AirqualityCharts.addChart({
 var sensors = [
   {
     type: 'NO2',
-    title: 'NO₂ past 48H',
+    title: 'NO₂ posledních 48h',
     unit: 'ppm',
   },
   {
     type: 'PM10',
-    title: 'PM10 past 48H',
+    title: 'PM10 posledních 48h',
     unit: 'ppm',
   },
   {
     type: 'O3',
-    title: 'O₃ past 48H',
+    title: 'O₃ posledních 48h',
     unit: 'ppm',
   },
 ]
@@ -118,7 +118,7 @@ sensors.forEach((sensor,i)=>{
       id: 'CHMILine-'+sensor.type,
       className: 'transparent',
       position: {
-        x: 1550+i*620,
+        x: 150+i*620,
         y: 50, // CAMP
         // y: 80,
       },
@@ -265,12 +265,12 @@ sensors.forEach((sensor,i)=>{
 var sensorsKarlin = [
   {
     type: 'weather.temperature',
-    title: 'Temperature past 48H',
+    title: 'Teplota',
     unit: '°C',
   },
   {
     type: 'noise',
-    title: 'PM10 past 48H',
+    title: 'PM10',
     unit: 'dB',
   },
 ]
@@ -280,12 +280,12 @@ sensorsKarlin.forEach((sensor,i)=>{
       id: 'KarlinLine-'+sensor.type,
       className: 'transparent',
       position: {
-        x: 4650+i*900,
-        y: 50, // CAMP
+        x: 750,
+        y: 1350+i*350, // CAMP
         // y: 80, 
       },
       size: {
-        width: 850
+        width: 650
       },
       data: {
         seriesType: 'series-one',

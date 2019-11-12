@@ -1,5 +1,5 @@
 var Shapes = {
-    shapeElements: ['parking','airquality','waste','transport','sharing'].map(s=>{
+    shapeElements: ['parking','transport','waste','airquality','sharing'].map(s=>{
         return { id: s, element: document.querySelector('#category-'+s)}
     }),
     highlighted: '',

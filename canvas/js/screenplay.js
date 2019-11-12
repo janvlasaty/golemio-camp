@@ -33,7 +33,7 @@ var Screenplay = {
         parking: {
             keyframes: [
                 {
-                    duration: 5,
+                    duration: 3,
                     action: function() {
                         ParkingTexts.fadeIn('parkingInfo','slower')
                         ParkingStatistics.fadeIn('parkingLotsCount','slower',2000)
@@ -43,15 +43,15 @@ var Screenplay = {
                     }
                 },
                 {
-                    duration: 5,
+                    duration: 1,
                     action: function() {
                         Message.update(
-                            'There are '+mockdata.parkings.features.length+' parking lots, '+mockdata.getParkingSpacesCount()+' spaces in total.', 
-                            '3000px', 5000, 'slower')
+                            'V Praze je '+mockdata.parkings.features.length+' parkovišť TSK, s celkovým počtem '+mockdata.getParkingSpacesCount()+' míst.', 
+                            '1000px', 5000, 'slower')
                     }
                 },
                 {
-                    duration: 6,
+                    duration: 9,
                     action: function() {
                         ParkingMaps.get('parking').element
                             .flyTo({center:[14.424, 50.082]})
@@ -60,15 +60,7 @@ var Screenplay = {
                     }
                 },
                 {
-                    duration: 7,
-                    action: function() {
-                        Message.update(
-                            'Parkings are located all over the city.', 
-                            '3000px', 5000, 'slow')
-                    }
-                },
-                {
-                    duration: 3,
+                    duration: 10,
                     name: 'showParking',
                     action: function(parkingID = 534016) {
                         
@@ -90,7 +82,7 @@ var Screenplay = {
                         ParkingMaps.get('parking').element.flyTo({
                             center: mockdata.getParking(parkingID).geometry.coordinates,
                             zoom: 12.8,
-                            pitch: 30,
+                            pitch: 0,
                             speed: 0.05, // make the flying slow
                             curve: 1.1,
                         })
@@ -98,11 +90,11 @@ var Screenplay = {
                     }
                 },
                 {
-                    duration: 15,
+                    duration: 5,
                     action: function() {
                         Message.update(
-                            'We monitor each parking every 5 minutes.',
-                            '3000px', 5000, 'slow')
+                            'Aktuální stav obsazenosti sledujeme každých 5 minut.',
+                            '500px', 5000, 'slow')
                     }
                 },
                 {
@@ -145,26 +137,28 @@ var Screenplay = {
                         TransportMaps.fadeIn('transport-all','slower')
 
                         Message.update(
-                            'We monitor each bus every 10-20 seconds.',
-                            '4300px', 5000, 'slow')
+                            'Aktuální pozici sledujeme u vozidla každých 10-20 sekund.',
+                            '500px', 5000, 'slow')
                     }
                 },
                 {
-                    duration: 5,
+                    duration: 1,
                     action: function() {
                         Message.update(
-                            'Let\'s have a look close to one trip.',
-                            '1300px', 5000, 'slow')
+                            'U každého spoje známe jeho trasu a aktuální zpoždění.',
+                            '500px', 5000, 'slow')
                     },
                 },
                 {
-                    duration: 30,
+                    duration: 20,
                     name: 'showTrip',
                     action: function(tripIndex = 0) {
 
-                        var trip_id = mockdata.getTransportPreparedTrips()[tripIndex]
+                        // var trip_id = mockdata.vehiclepositions.features[Math.floor(Math.random()*(mockdata.vehiclepositions.features.length-1))].properties.trip.gtfs_trip_id
+                        // var trip_id = '360_74_190424';
+                        var trip_id = mockdata.trips[tripIndex].trip_id;
                         var lineString = mockdata.getTransportPreparedTripShapeLinestring(trip_id)
-                        var stops = mockdata.getTransportPreparedTripStops(trip_id) //array
+                        // var stops = mockdata.getTransportPreparedTripStops(trip_id) //array
                         var trip = mockdata.getTransportTrip(trip_id)
                         var bboxLinestring = turf.bbox(lineString)
                         var bbox = [bboxLinestring.slice(0,2),bboxLinestring.slice(2,4)]
@@ -181,19 +175,17 @@ var Screenplay = {
                                 turf.featureCollection([lineString])
                             )
                         
-                        TransportMaps.get('transport-one').element
-                            .getSource('stop-points')
-                            .setData(
-                                turf.featureCollection(stops)
-                            )
+                        // TransportMaps.get('transport-one').element
+                        //     .getSource('stop-points')
+                        //     .setData(
+                        //         turf.featureCollection(stops)
+                            // )
                         TransportMaps.get('transport-one').element
                             .fitBounds(bbox, {
-                                padding: {top: 400, bottom:400, left: 400, right: 400},
-                                duration: 10000,
-                                minZoom: 12,
+                                padding: {top: 200, bottom:200, left: 200, right: 200},
+                                duration: 5000
                               })
                         TransportMaps.fadeIn('transport-one','slower')
-
 
                         TransportStatistics.update('alias',trip.properties.trip.gtfs_route_short_name)
                         TransportStatistics.fadeIn('alias','slower')
@@ -204,12 +196,12 @@ var Screenplay = {
                     }
                 },
                 {
-                    duration: 30,
+                    duration: 20,
                     repeat: 'showTrip',
                     data: 1,
                 },
                 {
-                    duration: 30,
+                    duration: 20,
                     repeat: 'showTrip',
                     data: 2,
                 },
@@ -239,7 +231,7 @@ var Screenplay = {
                             )
                         
                         AirqualityMaps.fadeIn('CHMI','slower')
-                        Message.update('There are '+mockdata.airqualitystations.features.length+' stations around Prague',
+                        Message.update('ČHMÚ provozuje '+mockdata.airqualitystations.features.length+' stanic na území města.',
                             // '1500px', CAMP
                             '1600px',
                             5000,'slow')
@@ -290,18 +282,9 @@ var Screenplay = {
                     }
                 },
                 {
-                    duration: 10,
+                    duration: 5,
                     action: function() {
-                        Message.update('We monitor each station every 1 hour',
-                            // '1500px', CAMP
-                            '1600px',
-                            5000,'slow')
-                    }
-                },
-                {
-                    duration: 3,
-                    action: function() {
-                        Message.update('Let\'s have a look to another one...',
+                        Message.update('Data z nich získáváme každou hodinu.',
                             // '1500px', CAMP
                             '1600px',
                             5000,'slow')
@@ -352,7 +335,7 @@ var Screenplay = {
                     duration: 3,
                     action: function() {
                         AirqualityTexts.fadeIn('KarlinInfo')
-                        Message.update('There is also pilot project in Karlin square','4500px',5000,'slow')
+                        Message.update('Zajišťujeme pilotní provoz testování chytrého osvětlení v Karlíně.','4500px',5000,'slow')
 
                         AirqualityStatistics.update('KarlinCount',
                             mockdata.icegatewaysensors.features.length
@@ -440,7 +423,7 @@ var Screenplay = {
         waste: {
             keyframes: [
                 {
-                    duration: 5,
+                    duration: 1,
                     action: function() {
                         //INIT
                         WasteMaps.get('waste').element
@@ -461,7 +444,7 @@ var Screenplay = {
                 {
                     duration: 12,
                     action: function() {
-                        Message.update('There are '+mockdata.wastestations.features.length+' stations to collect sorted waste','1300px',5000,'slower')
+                        Message.update('V Praze je '+mockdata.wastestations.features.length+' stanovišť tříděného odpadu.','900px',5000,'slower')
 
                         WasteStatistics.update('stationsCount',mockdata.wastestations.features.length,0)
                         WasteStatistics.fadeIn('stationsCount','slower',0)
@@ -479,7 +462,7 @@ var Screenplay = {
                     duration: 12,
                     action: function() {
 
-                        Message.update('We put '+mockdata.getWastestationsContainersSensored().length+' sensors into containers to measure fullness...','1300px',5000,'slower')
+                        Message.update('V rámci testování jsme umístili '+mockdata.getWastestationsContainersSensored().length+' senzorů zaplněnosti.','900px',5000,'slower')
 
                         WasteStatistics.update('stationsSensoredCount',mockdata.getWastestationsSensored().length,500)
                         WasteStatistics.fadeIn('stationsSensoredCount','slower',500)
@@ -508,7 +491,7 @@ var Screenplay = {
                 {
                     duration: 10,
                     action: function() {
-                        Message.update('In fact '+mockdata.getWastestationsPicksRatioUnder50()+'% of picks are done with less then half empty containers!','1300px',5000,'slower')
+                        Message.update('Z měření vychází, že '+mockdata.getWastestationsPicksRatioUnder50()+'% svozů probíhá s poloprázdnými kontejnery!','900px',5000,'slower')
 
                         WasteCharts.update('picksRatioUnder50',[mockdata.getWastestationsPicksRatioUnder50()],2000)
                         WasteCharts.fadeIn('picksRatioUnder50','slower',2000)
@@ -518,13 +501,14 @@ var Screenplay = {
                 {
                     duration: 15,
                     name: 'showStation',
-                    action: function(station = '') {
-                        // console.log(station)
+                    action: function(station = '1773') {
                         if (station == '') 
                             station = mockdata.getWastestationsSensored()[Math.round(Math.random()*(mockdata.getWastestationsSensored().length-1))].properties.id
+                        
+                        console.log(station)
                         //FLY TO
                         WasteMaps.get('waste').element
-                            .flyTo({center: mockdata.getWastestations(station).geometry.coordinates, bearing: 0, zoom: 13, speed: 0.05, curve: 1})
+                            .flyTo({center: mockdata.getWastestations(station).geometry.coordinates, bearing: 0, zoom: 12, speed: 0.05})
                         
 
                         var thisStation = mockdata.getWastestations(station)
@@ -542,11 +526,12 @@ var Screenplay = {
                         }
                         Object.keys(englishNames).forEach(e=>{
                             var container = thisStation.properties.containers.filter(c=>c.trash_type.description == englishNames[e])[0]
+                            console.log(container.sensor_container_id)
                             if (container) {
                                 if (container.last_measurement) {
                                     WasteCharts.update('waste-'+e,
                                         mockdata.getWastestationsMeasurements(
-                                            container.sensor_id
+                                            container.sensor_container_id
                                         )
                                     )
                                     WasteCharts.fadeIn('waste-'+e,'slower')
@@ -582,13 +567,13 @@ var Screenplay = {
                 {
                     duration: 15,
                     repeat: 'showStation',
-                    data: '',
+                    data: '1783',
                 },
-                {
-                    duration: 15,
-                    repeat: 'showStation',
-                    data: '',
-                },
+                // {
+                //     duration: 15,
+                //     repeat: 'showStation',
+                //     data: '2074',
+                // },
             ],
             end: function() {
                 WasteMaps.get('waste').element
@@ -637,7 +622,7 @@ var Screenplay = {
         sharing: {
             keyframes: [
                 {
-                    duration: 10,
+                    duration: 1,
                     action: function() {
                         //TEST
                         // SharingCharts.update('bikeProviders',
@@ -674,7 +659,7 @@ var Screenplay = {
                 {
                     duration: 1,
                     action: function() {
-                        Message.update('In Prague there recently launched new carsharing services','1200px',5000,'slow')
+                        Message.update('Praha zažívá boom sdílených služeb v oblasti dopravy.','1200px',5000,'slow')
                     }
                 },
                 {
@@ -684,7 +669,7 @@ var Screenplay = {
                     }
                 },
                 {
-                    duration: 20,
+                    duration: 15,
                     action: function() {
                         // SharingTexts.fadeIn()
                         SharingStatistics.update('CarsCountAvailable',mockdata.sharedcars.features.length)
@@ -735,7 +720,7 @@ var Screenplay = {
                 {
                     duration: 10,
                     action: function() {
-                        Message.update('There are '+mockdata.getBikeSharingCompanyCounts().counts.length+' bikesharing services','4800px',5000,'slow')
+                        Message.update('Aktuálně získáváme data od '+mockdata.getBikeSharingCompanyCounts().counts.length+' bikesharingových společností.','4800px',5000,'slow')
                         SharingCharts.update('bikeProviders',
                             mockdata.getBikeSharingCompanyCounts().counts,
                             { labels: mockdata.getBikeSharingCompanyCounts().labels }
@@ -756,6 +741,8 @@ var Screenplay = {
         },
     },
     returnToHome: async function() {
+        document.getElementById('praguelive').className = 'animated fadeIn slower';
+        document.getElementById('logosCornerRight').className = 'animated fadeIn slower';
         await Containers.hide()
         return await Shapes.showAll()
     },
@@ -791,6 +778,10 @@ var Screenplay = {
 
         Audio.fadeOut('intro')
         Audio.replay(scenario)
+
+
+        document.getElementById('logosCornerRight').className = 'animated fadeOut slower';
+        document.getElementById('praguelive').className = 'animated fadeOut slower';
 
         await Shapes.highlightOne(scenario)
         await Containers.show(scenario)

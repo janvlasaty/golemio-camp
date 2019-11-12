@@ -46,29 +46,31 @@ var audios = [
         path: './audio/citynoise.mp3',
     }
 ]
-audios.forEach((e,i)=>{
-    Audio.tracks.push({
-        id: e.id,
-        element: {},
-        source: {},
-        playing: false,
+if (false) {
+    audios.forEach((e,i)=>{
+        Audio.tracks.push({
+            id: e.id,
+            element: {},
+            source: {},
+            playing: false,
+        })
+        Audio.tracks[i].element = document.createElement('audio')
+        Audio.tracks[i].element.id = e.id
+        Audio.tracks[i].element.src = e.path     
+        Audio.tracks[i].element.type = 'audio/mpeg'
+        Audio.tracks[i].element.crossorigin = "anonymous"
+        document.querySelector('#audios').appendChild(Audio.tracks[i].element)
+        Audio.tracks[i].source = audioCtx.createMediaElementSource(Audio.tracks[i].element)
+        Audio.tracks[i].gainNode = audioCtx.createGain();
+        Audio.tracks[i].gainNode.gain.value = 1;
+
+        Audio.tracks[i].element.addEventListener('ended', (e) => {
+            console.log('Audio ('+e.target.id+') ended.')
+        }, false);
+
+        Audio.tracks[i].source.connect(Audio.tracks[i].gainNode).connect(audioCtx.destination);
     })
-    Audio.tracks[i].element = document.createElement('audio')
-    Audio.tracks[i].element.id = e.id
-    Audio.tracks[i].element.src = e.path     
-    Audio.tracks[i].element.type = 'audio/mpeg'
-    Audio.tracks[i].element.crossorigin = "anonymous"
-    document.querySelector('#audios').appendChild(Audio.tracks[i].element)
-    Audio.tracks[i].source = audioCtx.createMediaElementSource(Audio.tracks[i].element)
-    Audio.tracks[i].gainNode = audioCtx.createGain();
-    Audio.tracks[i].gainNode.gain.value = 1;
-
-    Audio.tracks[i].element.addEventListener('ended', (e) => {
-        console.log('Audio ('+e.target.id+') ended.')
-    }, false);
-
-    Audio.tracks[i].source.connect(Audio.tracks[i].gainNode).connect(audioCtx.destination);
-})
+}
 
 Audio.resumeCtx = function() {
     if (audioCtx.state === 'suspended') {
