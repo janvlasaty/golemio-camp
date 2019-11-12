@@ -162,10 +162,9 @@ var Screenplay = {
                     name: 'showTrip',
                     action: function(tripIndex = 0) {
 
-                        var trip_id = mockdata.getTransportPreparedTrips()[tripIndex]
-                        var lineString = mockdata.getTransportPreparedTripShapeLinestring(trip_id)
-                        var stops = mockdata.getTransportPreparedTripStops(trip_id) //array
-                        var trip = mockdata.getTransportTrip(trip_id)
+                        var trip = mockdata.getTransportPreparedTrip(tripIndex)
+                        var lineString = mockdata.getTransportPreparedTripShapeLinestring(trip.properties.gtfsData)
+                        // var stops = mockdata.getTransportPreparedTripStops(trip.properties.gtfsData) //array
                         var bboxLinestring = turf.bbox(lineString)
                         var bbox = [bboxLinestring.slice(0,2),bboxLinestring.slice(2,4)]
                         
@@ -181,11 +180,11 @@ var Screenplay = {
                                 turf.featureCollection([lineString])
                             )
                         
-                        TransportMaps.get('transport-one').element
-                            .getSource('stop-points')
-                            .setData(
-                                turf.featureCollection(stops)
-                            )
+                        // TransportMaps.get('transport-one').element
+                        //     .getSource('stop-points')
+                        //     .setData(
+                        //         turf.featureCollection(stops)
+                            // )
                         TransportMaps.get('transport-one').element
                             .fitBounds(bbox, {
                                 padding: {top: 400, bottom:400, left: 400, right: 400},

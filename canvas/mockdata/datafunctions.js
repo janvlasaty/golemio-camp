@@ -183,42 +183,32 @@ mockdata.getWastestationsMeasurements = function (id, days = 7) {
         })
 }
 
-mockdata.getTransportPreparedTrips = function () {
-    return this.trips.map(t => t.trip_id)
+mockdata.getTransportPreparedTrip = function (index = 0) {
+    var preparedTrips = this.vehiclepositions.features.filter(t => t.properties.gtfsData != undefined)
+    return preparedTrips[index]
 }
 
 mockdata.getTransportTrip = function (id) {
     return this.vehiclepositions.features.filter(t => id == t.properties.trip.gtfs_trip_id)[0]
 }
 
-
-mockdata.getTransportPreparedTripStops = function (id) {
-    return this.trips.filter(t => id == t.trip_id)[0].stop_times.map(t => {
+mockdata.getTransportPreparedTripStops = function (gtfsdata) {
+    return gtfsdata.stop_times.map(t => {
         return turf.point(t.stop.geometry.coordinates, Object.assign({
             arrival_time: t.arrival_time
         }, t.stop.properties))
     })
 }
-mockdata.getTransportPreparedTripStopsLinestring = function (id) {
-    var trip = this.trips.filter(t => id == t.trip_id)[0]
-    return turf.lineString(trip.stop_times.map(t => {
+mockdata.getTransportPreparedTripStopsLinestring = function (gtfsdata) {
+    return turf.lineString(gtfsdata.stop_times.map(t => {
         return t.stop.geometry.coordinates
     }), {
-        trip_id: id
+        trip_id: gtfsdata.trip_id
     })
 }
 
-// mockdata.getTransportPreparedTripStopsLinestring = function (id) {
-//     var trip = this.trips.filter(t=>id==t.trip_id)[0]
-//     return turf.lineString(trip.stop_times.map(t=>{
-//             return t.stop.geometry.coordinates
-//         }), { trip_id: id})
-// }
-
-
-mockdata.getTransportPreparedTripShapeLinestring = function (id) {
-    var trip = this.trips.filter(t => id == t.trip_id)[0]
-    return turf.lineString(trip.shapes.map(t => {
+mockdata.getTransportPreparedTripShapeLinestring = function (gtfsdata) {
+    return turf.lineString(gtfsdata.shapes.map(t => {
         return t.geometry.coordinates
     }), {})
 }
