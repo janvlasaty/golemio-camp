@@ -5,11 +5,12 @@ window.WebSocket = window.WebSocket || window.MozWebSocket;
 
 // var server = '10.180.0.105:1337';
 // var server = '10.0.0.11:1337'
-var server = 'campserver.francecentral.cloudapp.azure.com:8080';
+// var server = 'campserver.francecentral.cloudapp.azure.com:8080';
+var server = 'rabin.golemio.cz/prague-live-server';
 var connection = {}
 function connect() {
 
-    connection = new WebSocket('ws://'+server+'?type=canvas');
+    connection = new WebSocket('wss://'+server+'?type=canvas');
 
     connection.onopen = function () {
         // connection is opened and ready to use
