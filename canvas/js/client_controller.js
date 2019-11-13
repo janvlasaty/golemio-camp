@@ -5,14 +5,14 @@ window.WebSocket = window.WebSocket || window.MozWebSocket;
 
 // var server = '10.180.0.105:1337';
 // var server = 'localhost:1337';
-var server = 'campserver.francecentral.cloudapp.azure.com:8080';
+var server = 'rabin.golemio.cz/prague-live-server';
 var connection = {}
 
 var url = new URL(window.location.href);
 var key = url.searchParams.get("key");
 
 function connect() {
-    connection = new WebSocket('ws://'+server+'?type=controller&key='+key);
+    connection = new WebSocket('wss://'+server+'?type=controller&key='+key);
 
     connection.onopen = function () {
         // connection is opened and ready to use
