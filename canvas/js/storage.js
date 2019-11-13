@@ -39,7 +39,7 @@ function resetParkingData(n) {
   )
 }
 
-console.log(storage);
+// console.log(storage);
 
 
 var Storage = {}

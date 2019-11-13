@@ -4,8 +4,8 @@ ParkingStatistics.addFrame(
     {
         id: 'detail',
         position: {
-            x: 5300, //CAMP
-            // x: 5450,
+            // x: 5300, //CAMP
+            x: 5450, // FULL HD
             y: 960,
         }
     }

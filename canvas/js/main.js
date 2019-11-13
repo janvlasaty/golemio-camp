@@ -3,29 +3,15 @@ document.addEventListener("DOMContentLoaded", function(event) {
         document.querySelectorAll('.container').forEach(c=>{
             c.className = 'container hidden'
         })
-        console.log('shloud by reday')
-        // Screenplay.play('parking')
+        console.log('Ready...')
 
         document.querySelector('#loader').className='animated fadeOut slower'
 
         if (true) {
             setTimeout(function() {
                 document.querySelector('#loader').className='hidden'
-
-
                 Shapes.showAll()
-
             },5000)
-            setTimeout(function() {
-
-                Audio.replay('citynoise')
-                Audio.setGain('citynoise',.15)
-                setInterval(function(){
-                    Audio.replay('citynoise')
-                    Audio.setGain('citynoise',.15)
-                },3*60*1000)
-
-            },20000)
         }
     },3000)
 })
@@ -33,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 var Loop = {
     active: false,
     scenarios: [
-        //'general',
+        'general',
         'parking','airquality','waste','transport','sharing'
     ],
     index: 0,
@@ -65,28 +51,36 @@ Loop.replay = function() {
 }
 
 document.onkeyup = function (event) {
-    if (event.which == 80 || event.keyCode == 80) {
+    if (event.which == 80 || event.keyCode == 80) { //t
          Screenplay.play('parking')
     }
-    if (event.which == 84 || event.keyCode == 84) {
+    if (event.which == 84 || event.keyCode == 84) { //t
          Screenplay.play('transport')
     }
-    if (event.which == 87 || event.keyCode == 87) {
+    if (event.which == 87 || event.keyCode == 87) { //w
          Screenplay.play('waste')
     }
-    if (event.which == 83 || event.keyCode == 83) {
+    if (event.which == 83 || event.keyCode == 83) { //s
          Screenplay.play('sharing')
     }
-    if (event.which == 67 || event.keyCode == 67) {
+    if (event.which == 67 || event.keyCode == 67) { //c
          Screenplay.play('airquality')
     }
-    if (event.which == 71 || event.keyCode == 71) {
+    if (event.which == 71 || event.keyCode == 71) { //g
          Screenplay.play('general')
     }
-    if (event.which == 82 || event.keyCode == 82) {
+    // if (event.which == 77 || event.keyCode == 77) {
+    //     Audio.replay('citynoise')
+    //     Audio.setGain('citynoise',.15)
+    //     setInterval(function(){
+    //         Audio.replay('citynoise')
+    //         Audio.setGain('citynoise',.15)
+    //     },3*60*1000)
+    // }
+    if (event.which == 82 || event.keyCode == 82) { //r
          Screenplay.kindReload()
     }
-    if (event.which == 76 || event.keyCode == 76) {
+    if (event.which == 76 || event.keyCode == 76) { //l
         Loop.active = !Loop.active
         Loop.play()
     }

@@ -1,11 +1,7 @@
-
-
 // if user is running mozilla then use it's built-in WebSocket
 window.WebSocket = window.WebSocket || window.MozWebSocket;
 
-// var server = '10.180.0.105:1337';
-// var server = '10.0.0.11:1337'
-// var server = 'campserver.francecentral.cloudapp.azure.com:8080';
+// var server = 'api.golemio.cz/prague-live-server';
 var server = 'rabin.golemio.cz/prague-live-server';
 var connection = {}
 function connect() {
@@ -15,6 +11,10 @@ function connect() {
     connection.onopen = function () {
         // connection is opened and ready to use
         console.log('Connected as canvas!');
+        
+        Message.update(
+            'Connected to Golemio API.', 
+            '2500px', 1000, 'slower')
     };
 
     connection.onclose = function(e) {

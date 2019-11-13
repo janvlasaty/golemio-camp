@@ -48,14 +48,22 @@ var Screenplay = {
                         Message.update(
                             'There are '+mockdata.parkings.features.length+' parking lots, '+mockdata.getParkingSpacesCount()+' spaces in total.', 
                             '3000px', 5000, 'slower')
+                            
                     }
                 },
                 {
                     duration: 6,
                     action: function() {
                         ParkingMaps.get('parking').element
-                            .flyTo({center:[14.424, 50.082]})
-                            .getSource('parking-point').setData(turf.featureCollection([]))
+                            .getSource('parking-points').setData(mockdata.parkings)
+                        
+                        var bbox = turf.bbox(mockdata.parkings)
+                        bbox = [bbox.slice(0,2),bbox.slice(2,4)]
+                        ParkingMaps.get('parking').element
+                            .fitBounds(bbox, {
+                                padding: {top: 100, bottom:100, left: 100, right: 100},
+                                })
+
                         ParkingMaps.fadeIn('','slower')
                     }
                 },
@@ -87,13 +95,14 @@ var Screenplay = {
                         ParkingStatistics.fadeIn('','slower')
                         
                         //MAP
-                        ParkingMaps.get('parking').element.flyTo({
-                            center: mockdata.getParking(parkingID).geometry.coordinates,
-                            zoom: 12.8,
-                            pitch: 30,
-                            speed: 0.05, // make the flying slow
-                            curve: 1.1,
-                        })
+                        // ParkingMaps.get('parking').element.flyTo({
+                        //     center: mockdata.getParking(parkingID).geometry.coordinates,
+                        //     zoom: 12.8,
+                        //     pitch: 30,
+                        //     speed: 0.05, // make the flying slow
+                        //     curve: 1.1,
+                        // })
+
                         ParkingMaps.get('parking').element.getSource('parking-point').setData(turf.featureCollection([mockdata.getParking(parkingID)]))
                     }
                 },
@@ -155,6 +164,14 @@ var Screenplay = {
                         Message.update(
                             'Let\'s have a look close to one trip.',
                             '1300px', 5000, 'slow')
+
+                        
+                        // var bbox = turf.bbox(turf.featureCollection(mockdata.trips.filter(e=>e.properties.gtfsData!==undefined)))
+                        // bbox = [bbox.slice(0,2),bbox.slice(2,4)]
+                        // TransportMaps.get('transport-one').element
+                        //     .fitBounds(bbox, {
+                        //         padding: {top: 200, bottom:200, left: 200, right: 200},
+                        //         })
                     },
                 },
                 {
@@ -179,19 +196,23 @@ var Screenplay = {
                             .setData(
                                 turf.featureCollection([lineString])
                             )
+
+                        
+                        TransportMaps.get('transport-one').element
+                            .fitBounds(bbox, {
+                                padding: {top: 400, bottom:400, left: 400, right: 400},
+                                // duration: 10000,
+                                // minZoom: 12,
+                              })
                         
                         // TransportMaps.get('transport-one').element
                         //     .getSource('stop-points')
                         //     .setData(
                         //         turf.featureCollection(stops)
                             // )
-                        TransportMaps.get('transport-one').element
-                            .fitBounds(bbox, {
-                                padding: {top: 400, bottom:400, left: 400, right: 400},
-                                duration: 10000,
-                                minZoom: 12,
-                              })
-                        TransportMaps.fadeIn('transport-one','slower')
+                        setTimeout(function(){
+                            TransportMaps.fadeIn('transport-one','slower')
+                        }, 3000)
 
 
                         TransportStatistics.update('alias',trip.properties.trip.gtfs_route_short_name)
@@ -203,9 +224,21 @@ var Screenplay = {
                     }
                 },
                 {
+                    duration: 3,
+                    name: 'hideTrip',
+                    action: function() {
+                        TransportMaps.fadeOut('transport-one','slower')
+                    }
+                },
+                {
                     duration: 30,
                     repeat: 'showTrip',
                     data: 1,
+                },
+                {
+                    duration: 3,
+                    repeat: 'hideTrip',
+                    data: '',
                 },
                 {
                     duration: 30,
@@ -237,6 +270,15 @@ var Screenplay = {
                                 turf.featureCollection(mockdata.airqualitystations.features)
                             )
                         
+
+                        var bbox = turf.bbox(mockdata.airqualitystations)
+                        bbox = [bbox.slice(0,2),bbox.slice(2,4)]
+                        AirqualityMaps.get('CHMI').element
+                            .fitBounds(bbox, {
+                                padding: {top: 300, bottom:300, left: 300, right: 300},
+                                })
+                        
+                        
                         AirqualityMaps.fadeIn('CHMI','slower')
                         Message.update('There are '+mockdata.airqualitystations.features.length+' stations around Prague',
                             // '1500px', CAMP
@@ -252,31 +294,31 @@ var Screenplay = {
                         AirqualityMaps.get('CHMI').element
                             .getSource('airquality-point')
                             .setData(
-                                turf.featureCollection([mockdata.getAirqualityStation('AVYNA')])
+                                turf.featureCollection([mockdata.getAirqualityStation('ALEGA')])
                             )
-                        AirqualityMaps.get('CHMI').element
-                            .flyTo({
-                                center: mockdata.getAirqualityStation('AVYNA').geometry.coordinates,
-                                speed: 0.05, // make the flying slow
-                                curve: 1,
-                            })
+                        // AirqualityMaps.get('CHMI').element
+                        //     .flyTo({
+                        //         center: mockdata.getAirqualityStation('AVYNA').geometry.coordinates,
+                        //         speed: 0.05, // make the flying slow
+                        //         curve: 1,
+                        //     })
 
                         //UPDATE            
                         AirqualityStatistics.update('CHMIName',
-                            mockdata.getAirqualityStation('AVYNA').properties.name
+                            mockdata.getAirqualityStation('ALEGA').properties.name
                         )
 
                         AirqualityCharts.update('CHMIAirqualityIndex',
-                            mockdata.getAirqualityStation('AVYNA').properties.measurement.AQ_hourly_index*25
+                            mockdata.getAirqualityStation('ALEGA').properties.measurement.AQ_hourly_index*25
                         )
                         AirqualityCharts.update('CHMILine-NO2',
-                            mockdata.getAirqualityStationSensorHistory('AVYNA','NO2')
+                            mockdata.getAirqualityStationSensorHistory('ALEGA','NO2')
                         )
                         AirqualityCharts.update('CHMILine-PM10',
-                            mockdata.getAirqualityStationSensorHistory('AVYNA','PM10')
+                            mockdata.getAirqualityStationSensorHistory('ALEGA','PM10')
                         )
                         AirqualityCharts.update('CHMILine-O3',
-                            mockdata.getAirqualityStationSensorHistory('AVYNA','O3')
+                            mockdata.getAirqualityStationSensorHistory('ALEGA','O3')
                         )
 
                         //FADE
@@ -285,7 +327,7 @@ var Screenplay = {
                         AirqualityCharts.fadeIn('CHMIAirqualityIndex','',300)
                         AirqualityCharts.fadeIn('CHMILine-NO2','',600)
                         AirqualityCharts.fadeIn('CHMILine-PM10','',900)
-                        AirqualityCharts.fadeIn('CHMILine-O3','',1200)
+                        // AirqualityCharts.fadeIn('CHMILine-O3','',1200)
                     }
                 },
                 {
@@ -313,22 +355,27 @@ var Screenplay = {
                         AirqualityMaps.get('CHMI').element
                             .getSource('airquality-point')
                             .setData(
-                                turf.featureCollection([mockdata.getAirqualityStation('ARIEA')])
+                                turf.featureCollection([mockdata.getAirqualityStation('ALERA')])
                             )
                         //MAP FLYTO
-                        AirqualityMaps.get('CHMI').element
-                            .flyTo({
-                                center: mockdata.getAirqualityStation('ARIEA').geometry.coordinates,
-                                speed: 0.05, // make the flying slow
-                                curve: 1,
-                            })
+                        // AirqualityMaps.get('CHMI').element
+                        //     .flyTo({
+                        //         center: mockdata.getAirqualityStation('ARIEA').geometry.coordinates,
+                        //         speed: 0.05, // make the flying slow
+                        //         curve: 1,
+                        //     })
                     }
                 },
                 {
                     duration: 5,
                     name: 'shownextchmipoint',
-                    action: function(selectedID = 'ARIEA') {
+                    action: function(selectedID = 'ALERA') {
                         //UPDATE            
+                        AirqualityMaps.get('CHMI').element
+                            .getSource('airquality-point')
+                            .setData(
+                                turf.featureCollection([mockdata.getAirqualityStation(selectedID)])
+                            )
                         AirqualityStatistics.update('CHMIName',
                             mockdata.getAirqualityStation(selectedID).properties.name
                         )
@@ -336,15 +383,20 @@ var Screenplay = {
                         AirqualityCharts.update('CHMIAirqualityIndex',
                             mockdata.getAirqualityStation(selectedID).properties.measurement.AQ_hourly_index*25
                         )
-                        AirqualityCharts.update('CHMILine-NO2',
-                            mockdata.getAirqualityStationSensorHistory(selectedID,'NO2')
-                        )
-                        AirqualityCharts.update('CHMILine-PM10',
-                            mockdata.getAirqualityStationSensorHistory(selectedID,'PM10')
-                        )
-                        AirqualityCharts.update('CHMILine-O3',
-                            mockdata.getAirqualityStationSensorHistory(selectedID,'O3')
-                        )
+                        var AQcharts = [
+                            { chartName: 'CHMILine-NO2', sensor: 'NO2' },
+                            { chartName: 'CHMILine-PM10', sensor: 'PM10' },
+                            { chartName: 'CHMILine-O3', sensor: 'O3' }
+                        ]
+                        AQcharts.forEach(ch=>{
+                            var data = mockdata.getAirqualityStationSensorHistory(selectedID,ch.sensor)
+                            if (data.length < 2) 
+                                AirqualityCharts.fadeOut(ch.chartName)
+                            else {
+                                AirqualityCharts.fadeIn(ch.chartName)
+                                AirqualityCharts.update(ch.chartName,data)
+                            }
+                        })
                     }
                 },
                 {
@@ -441,6 +493,8 @@ var Screenplay = {
                 {
                     duration: 5,
                     action: function() {
+                        WasteStatistics.hide('typeToPick')
+                        WasteStatistics.hide('daysToPick')
                         //INIT
                         WasteMaps.get('waste').element
                             .getSource('waste-points').setData(
@@ -451,7 +505,14 @@ var Screenplay = {
                                 turf.featureCollection(mockdata.getWastestationsSensored())
                             )
                         WasteMaps.get('waste').element
-                            .setBearing(30)
+                            .setBearing(20)
+                        
+                        var bbox = turf.bbox(turf.featureCollection(mockdata.getWastestationsSensored()))
+                        bbox = [bbox.slice(0,2),bbox.slice(2,4)]
+                        WasteMaps.get('waste').element
+                            .fitBounds(bbox, {
+                                padding: {top: 100, bottom:100, left: 100, right: 100},
+                              })
 
                         //FADE IN
                         WasteTexts.fadeIn('wasteInfo','slower')
@@ -517,13 +578,12 @@ var Screenplay = {
                 {
                     duration: 15,
                     name: 'showStation',
-                    action: function(station = '') {
-                        // console.log(station)
+                    action: function(station = 5275) {
                         if (station == '') 
                             station = mockdata.getWastestationsSensored()[Math.round(Math.random()*(mockdata.getWastestationsSensored().length-1))].properties.id
                         //FLY TO
-                        WasteMaps.get('waste').element
-                            .flyTo({center: mockdata.getWastestations(station).geometry.coordinates, bearing: 0, zoom: 13, speed: 0.05, curve: 1})
+                        // WasteMaps.get('waste').element
+                        //     .flyTo({center: mockdata.getWastestations(station).geometry.coordinates, bearing: 0, zoom: 13, speed: 0.05, curve: 1})
                         
 
                         var thisStation = mockdata.getWastestations(station)
@@ -543,9 +603,10 @@ var Screenplay = {
                             var container = thisStation.properties.containers.filter(c=>c.trash_type.description == englishNames[e])[0]
                             if (container) {
                                 if (container.last_measurement) {
+                                    console.log('update'+e)
                                     WasteCharts.update('waste-'+e,
                                         mockdata.getWastestationsMeasurements(
-                                            container.sensor_id
+                                            container.sensor_container_id
                                         )
                                     )
                                     WasteCharts.fadeIn('waste-'+e,'slower')
@@ -562,7 +623,7 @@ var Screenplay = {
                         )
                         WasteCharts.fadeIn('actualFullness')
                         
-                        if (mockdata.getWastestationNearestPick(station).daysTo>0 && mockdata.getWastestationNearestPick(station).daysTo<100) {
+                        if (mockdata.getWastestationNearestPick(station).daysTo>0) {
                             WasteStatistics.update('daysToPick', mockdata.getWastestationNearestPick(station).daysTo)
                             WasteStatistics.fadeIn('daysToPick','slower')
                             WasteStatistics.update('typeToPick', mockdata.getWastestationNearestPick(station).type)
@@ -572,7 +633,7 @@ var Screenplay = {
                             WasteStatistics.fadeOut('daysToPick','slower')
                         }
                         WasteStatistics.update('stationAddress',
-                            mockdata.getWastestations(station).properties.name
+                            mockdata.getWastestations(station).properties.name.substring(0, 26)
                         )
                         WasteStatistics.fadeIn('stationAddress')
 
@@ -581,12 +642,12 @@ var Screenplay = {
                 {
                     duration: 15,
                     repeat: 'showStation',
-                    data: '',
+                    data: 5276,
                 },
                 {
                     duration: 15,
                     repeat: 'showStation',
-                    data: '',
+                    data: 2074,
                 },
             ],
             end: function() {

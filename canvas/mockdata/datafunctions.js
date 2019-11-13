@@ -129,7 +129,8 @@ mockdata.getWastestationNearestPick = function (id) {
     this.wastestations.features.filter(s => s.properties.id == id)[0].properties.containers.forEach(c => {
         if (c.last_measurement) {
             var cTimestamp = moment(c.last_measurement.prediction_utc).unix() * 1000
-            if (cTimestamp < pick.timestamp) {
+            var diff = cTimestamp - moment().unix() * 1000;
+            if (cTimestamp < pick.timestamp && diff > 0) {
                 pick.type = englishTypes[c.trash_type.description]
                 pick.timestamp = cTimestamp
                 pick.daysTo = (cTimestamp - moment().unix() * 1000) / (1000 * 60 * 60 * 24)
@@ -177,7 +178,7 @@ mockdata.getWastestationsMeasurements = function (id, days = 7) {
         .filter(s => moment(s.measured_at_utc) > moment().subtract(days, 'days'))
         .map(s => {
             return {
-                x: moment(s.measured_at_utc).unix() * 1000,
+                x: moment(s.measured_at_utc).toISOString(),
                 y: parseFloat(s.percent_calculated),
             }
         })
@@ -208,9 +209,11 @@ mockdata.getTransportPreparedTripStopsLinestring = function (gtfsdata) {
 }
 
 mockdata.getTransportPreparedTripShapeLinestring = function (gtfsdata) {
-    return turf.lineString(gtfsdata.shapes.map(t => {
-        return t.geometry.coordinates
-    }), {})
+    return turf.lineString(gtfsdata.shapes
+        .sort((a,b)=>a.properties.shape_pt_sequence - b.properties.shape_pt_sequence)
+        .map(t => {
+            return t.geometry.coordinates
+        }), {})
 }
 
 mockdata.getAverageDelay = function () {

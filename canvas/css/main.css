@@ -34,12 +34,12 @@ body::-webkit-scrollbar {
     position: absolute;
 
     /* CAMP */
-    top: 60px;
-    left: 0px;
+    /* top: 60px;
+    left: 0px; */
 
-    /* 4x FULL HD
+    /* 4x FULL HD */
     top: -60px;
-    left: 240px; */
+    left: 240px;
 
     background: black;
     overflow: hidden;
@@ -74,9 +74,9 @@ HEADING
 #praguelive {
     position: absolute;
     /* CAMP */
-    left: 0px;
-    /* 4x FULL HD
-    left: 100px; */
+    /* left: 0px; */
+    /* 4x FULL HD */
+    left: 100px; 
 
     top: 100px;
     width: 1000px;
@@ -119,10 +119,8 @@ HEADING
 
 /* #heart {
     animation-name: unset;
-} 
-#categories svg path {
-    animation-name: unset;
 }  */
+
 
 
 /* INTRO */
@@ -565,3 +563,15 @@ DEV BUTTONS
 #buttons button:nth-child(9) {
     left: 4500px;
 }
+
+
+
+
+
+
+
+/* NO ANIMATION */
+
+#categories svg path {
+    animation-name: unset;
+}  

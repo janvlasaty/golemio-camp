@@ -14,7 +14,7 @@ ParkingMaps.add({
         },
         initialization: {
             center: [14.424, 50.082],
-            zoom: 12.5,
+            zoom: 12,
             pitch: 30,
             style: 'mapbox://styles/janvlasaty/cjutqb4e519hv1fo1ipiwbwmm',
         },
@@ -27,14 +27,14 @@ ParkingMaps.add({
                 type: 'geojson',
                 data: {
                     "type": "FeatureCollection",
-                    "features": storage.features
+                    "features": []
                 }
             })
             map.addSource('parking-point',{
                 type: 'geojson',
                 data: {
                     "type": "FeatureCollection",
-                    "features": [storage.features[4]]
+                    "features": []
                 }
             })
             map.addLayer({

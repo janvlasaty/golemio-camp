@@ -3,8 +3,8 @@ var ParkingTexts = new Texts('parking')
 ParkingTexts.add({
     id: 'parkingInfo',
     position: {
-        // x: 5380,CAMP
-        x: 5530,
+        // x: 5380, //CAMP
+        x: 5530, // FULL HD
         y: 380,
     },
     width: 500,
@@ -24,8 +24,8 @@ ParkingTexts.add({
 ParkingTexts.add({
     id: 'additionalParkingInfo',
     position: {
-        x: 5460, // CAMP
-        // x: 5610,
+        // x: 5460, // CAMP
+        x: 5610, // FULL HD
         y: 850,
     },
     width: 500,
@@ -37,10 +37,10 @@ ParkingTexts.add({
 ParkingTexts.add({
     id: 'AverageOccupancy',
     position: {
-        x: 6410,  // CAMP
-        // x: 6560,
-        y: 20, // CAMP
-        // y: 50,
+        // x: 6410,  // CAMP
+        x: 6560, // FULL HD
+        // y: 20, // CAMP
+        y: 50, // FULL HD
     },
     width: 500,
     data: {
