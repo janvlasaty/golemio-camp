@@ -275,7 +275,7 @@ var Screenplay = {
                         bbox = [bbox.slice(0,2),bbox.slice(2,4)]
                         AirqualityMaps.get('CHMI').element
                             .fitBounds(bbox, {
-                                padding: {top: 300, bottom:300, left: 300, right: 300},
+                                padding: {top: 200, bottom:200, left: 200, right: 200},
                                 })
                         
                         
